@@ -25,7 +25,7 @@ class TmdbBarButtonItem: UIBarButtonItem{
             Tmdb.shared.auth.logout()
             
         default:
-            UIApplication.shared.keyWindow?.rootViewController?.present(LoginViewController.instance, animated: true, completion: nil)
+            UIApplication.shared.keyWindow?.rootViewController?.present(UIStoryboard.tmdbLogin, animated: true, completion: nil)
 
         }
     }
