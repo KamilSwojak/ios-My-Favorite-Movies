@@ -337,7 +337,7 @@ class TmdbService{
     
     //MARK: Keywords
     
-    func getKeywordDetails(keywordId: Int, completion: @escaping (_ data: GetKeywordDetailsResponse?) -> Void) {
+    func getKeywordDetails(keywordId: Int, completion: @escaping (_ data: Keyword?) -> Void) {
         let path = "/keyword/\(keywordId)"
         requestJson(path: path, completion: completion)
     }

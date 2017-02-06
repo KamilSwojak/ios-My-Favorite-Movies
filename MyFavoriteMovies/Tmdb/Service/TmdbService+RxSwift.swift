@@ -319,7 +319,7 @@ extension TmdbService{
     
     //MARK: Keywords
     
-    func getKeywordDetails(keywordId: Int) -> Observable<GetKeywordDetailsResponse> {
+    func getKeywordDetails(keywordId: Int) -> Observable<Keyword> {
         let path = "/keyword/\(keywordId)"
         return requestJson(path: path)
     }
