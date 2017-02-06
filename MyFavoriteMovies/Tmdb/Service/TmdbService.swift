@@ -487,7 +487,7 @@ class TmdbService{
     }
     
     /// Rate a movie.
-    func rateMovie(movieId: Int, value: RatingScale, completion: @escaping (_ data: PostRateMovieResponse?) -> Void) {
+    func rateMovie(movieId: Int, value: RatingScale, completion: @escaping (_ data: TmdbResponse?) -> Void) {
         let body = PostRateMovieBody(value: value)
         let path = "/movie/\(movieId)/rating"
         
@@ -596,7 +596,7 @@ class TmdbService{
     //MARK: Networks
     
     /// Get the details of a network.
-    func getNetworkDetails(networkId: Int, completion: @escaping (_ data: GetNetworkDetailsResponse?) -> Void) {
+    func getNetworkDetails(networkId: Int, completion: @escaping (_ data: TmdbNetwork?) -> Void) {
         let path = "/network/\(networkId)"
         requestJson(path: path, completion: completion)
     }
@@ -993,7 +993,7 @@ class TmdbService{
     }
     
     /// Rate a TV show.
-    func rateTVShow(tvId: Int, value: RatingScale, completion: @escaping (_ data: PostRateTVShowResponse?) -> Void) {
+    func rateTVShow(tvId: Int, value: RatingScale, completion: @escaping (_ data: TmdbResponse?) -> Void) {
         let path = "/tv/\(tvId)/rating"
         
         let body = PostRateTVShowBody(value: value)
@@ -1190,7 +1190,7 @@ class TmdbService{
     }
     
     /// Rate a TV episode.
-    func rateTVEpisode(tvId: Int, seasonNumber: Int, episodeNumber: Int, value: RatingScale, completion: @escaping (_ data: PostRateTVEpisodeResponse?) -> Void) {
+    func rateTVEpisode(tvId: Int, seasonNumber: Int, episodeNumber: Int, value: RatingScale, completion: @escaping (_ data: TmdbResponse?) -> Void) {
         let path = "/tv/\(tvId)/season/\(seasonNumber)/episode/\(episodeNumber)/rating"
         
         let body = PostRateTVEpisodeBody(value: value)
