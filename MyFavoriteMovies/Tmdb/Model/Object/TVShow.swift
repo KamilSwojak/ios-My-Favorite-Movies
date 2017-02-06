@@ -22,7 +22,7 @@ class TVShow: TmdbResponse{
     var languages: [String]?
     var last_air_date: String?
     var name: String?
-    var networks: [Network]?
+    var networks: [TmdbNetwork]?
     var number_of_episodes: Int?
     var number_of_seasons: Int?
     var origin_country: [String]?
