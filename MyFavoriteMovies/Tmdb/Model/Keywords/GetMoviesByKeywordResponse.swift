@@ -11,10 +11,10 @@ import Foundation
 import ObjectMapper
 
 class GetMoviesByKeywordResponse: TmdbResponse{
+    
     var page: Int?
     var total_pages: Int?
     var total_results: Int?
-    
     var results: [Movie]?
     
     override func mapping(map: Map) {
