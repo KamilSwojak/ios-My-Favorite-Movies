@@ -1,5 +1,5 @@
 //
-//  Protocol.swift
+//  ViewController-ViewModel-Interface.swift
 //  My Favorite Movies
 //
 //  Created by Kamil Swojak on 03/12/2016.
