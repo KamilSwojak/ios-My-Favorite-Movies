@@ -11,7 +11,7 @@ import ObjectMapper
 
 class GetMovieGenresResponse: TmdbResponse{
     
-    var genres: [TmdbEntity]?
+    var genres: [Genre]?
     
     override func mapping(map: Map) {
         super.mapping(map: map)
