@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SubtitleCollectionViewCell" id="aTN-4f-W5o" customClass="SubtitleCollectionViewCell" customModule="MyFavoriteMovies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="160" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7b-Vi-OY8">
+                        <rect key="frame" x="0.0" y="29.5" width="160" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="CxK-u3-eW5"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4M-6M-tqU">
+                        <rect key="frame" x="8" y="30.5" width="144" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.39016384549999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teL-ih-eRd">
+                        <rect key="frame" x="8" y="8" width="144" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="teL-ih-eRd" firstAttribute="top" secondItem="aTN-4f-W5o" secondAttribute="topMargin" id="DHj-KR-wyd"/>
+                <constraint firstItem="F7b-Vi-OY8" firstAttribute="width" secondItem="aTN-4f-W5o" secondAttribute="width" id="MZC-rC-56t"/>
+                <constraint firstItem="F7b-Vi-OY8" firstAttribute="centerX" secondItem="aTN-4f-W5o" secondAttribute="centerX" id="O3j-WQ-AcT"/>
+                <constraint firstItem="l4M-6M-tqU" firstAttribute="leading" secondItem="aTN-4f-W5o" secondAttribute="leadingMargin" id="WI6-ac-spv"/>
+                <constraint firstItem="l4M-6M-tqU" firstAttribute="top" secondItem="F7b-Vi-OY8" secondAttribute="bottom" id="apv-1P-QCD"/>
+                <constraint firstItem="F7b-Vi-OY8" firstAttribute="top" secondItem="teL-ih-eRd" secondAttribute="bottom" id="bFz-UH-PB6"/>
+                <constraint firstItem="F7b-Vi-OY8" firstAttribute="centerY" secondItem="aTN-4f-W5o" secondAttribute="centerY" id="jih-ma-eOI"/>
+                <constraint firstAttribute="trailingMargin" secondItem="l4M-6M-tqU" secondAttribute="trailing" id="jrJ-wb-J1X"/>
+                <constraint firstItem="teL-ih-eRd" firstAttribute="leading" secondItem="aTN-4f-W5o" secondAttribute="leadingMargin" id="nJx-jf-ljJ"/>
+                <constraint firstAttribute="trailingMargin" secondItem="teL-ih-eRd" secondAttribute="trailing" id="p7y-vW-LQV"/>
+                <constraint firstItem="l4M-6M-tqU" firstAttribute="bottom" secondItem="aTN-4f-W5o" secondAttribute="bottomMargin" id="uq6-la-7Vy"/>
+            </constraints>
+            <size key="customSize" width="165" height="52"/>
+            <connections>
+                <outlet property="subtitle" destination="l4M-6M-tqU" id="ce6-EE-aJT"/>
+                <outlet property="title" destination="teL-ih-eRd" id="Ry2-1Z-tSp"/>
+            </connections>
+            <point key="canvasLocation" x="405" y="121"/>
+        </collectionViewCell>
+    </objects>
+</document>
