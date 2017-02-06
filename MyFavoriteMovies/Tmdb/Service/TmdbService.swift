@@ -78,7 +78,7 @@ class TmdbService{
     }
     
     /// This method allows you to mark a movie or TV show as a favorite item.
-    func markAsFavorite(mediaType: TmdbMediaType, mediaId: Int, favorite: Bool, accountId: Int, completion: @escaping (_ data: MarkAsFavoriteResponse?) -> Void){
+    func markAsFavorite(mediaType: TmdbMediaType, mediaId: Int, favorite: Bool, accountId: Int, completion: @escaping (_ data: TmdbResponse?) -> Void){
         let path = "/account/\(accountId)/favorite"
         
         let body = MarkAsFavoriteBody(mediaType: mediaType.rawValue, mediaId: mediaId, favorite: favorite)
@@ -155,7 +155,7 @@ class TmdbService{
     }
     
     /// Add a movie or TV show to your watchlist.
-    func addToWatchlist(mediaType: TmdbMediaType, mediaId: Int, watchlist: Bool, accountId: Int, completion: @escaping (_ data: AddToWatchlistResponse?) -> Void) {
+    func addToWatchlist(mediaType: TmdbMediaType, mediaId: Int, watchlist: Bool, accountId: Int, completion: @escaping (_ data: TmdbResponse?) -> Void) {
         let path = "/account/\(accountId)/watchlist"
         
         let body = AddToWatchlistBody(mediaType: mediaType.rawValue, mediaId: mediaId, watchlist: watchlist)
