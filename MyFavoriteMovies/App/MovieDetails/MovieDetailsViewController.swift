@@ -22,6 +22,7 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         sections = MovieDetailsTableSections(movie: movie)
         
         tableView.estimatedRowHeight = 180
@@ -44,47 +45,36 @@ class MovieDetailsViewController: UIViewController {
                 self.sections.reloadData()
         }
 
-        let d2 = sections.crew.bindElements(of: output.crew.asObservable)
-        let d3 = sections.cast.bindElements(of: output.cast.asObservable)
-        let d4 = sections.genres.bindElements(of: output.genres.asObservable)
-        let d5 = sections.keywords.bindElements(of: output.keywords.asObservable)
+        let d2 = sections.crew.bindElements(of: output.crew)
+        let d3 = sections.cast.bindElements(of: output.cast)
+        let d4 = sections.genres.bindElements(of: output.genres)
+        let d5 = sections.keywords.bindElements(of: output.keywords)
+        
+        let d6 = sections.playTrailerTaps
+                        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+                        .observeOn(MainScheduler.instance)
+                        .withLatestFrom(output.trailers)
+                        .subscribe { (event) in
+                            guard let trailerUrls = event.element else { return }
+                
+                            guard trailerUrls.count > 0 else { return }
+                
+                            self.openUrl(url: trailerUrls[0])
+        }
+        
+        let d7 = output.trailerButtonVisibility.subscribe { (event) in
+            guard let isVisible = event.element else { return }
+            
+            self.sections.playTrailerVisibility = isVisible
+        }
         
         disposeBag.insert(d1)
         disposeBag.insert(d2)
         disposeBag.insert(d3)
         disposeBag.insert(d4)
         disposeBag.insert(d5)
-        
-        sections.playTrailerTaps.subscribe { _ in
-            print("trailer")
-            
-            Tmdb.shared.api.getMovieVideos(movieId: self.movie.id!) { videos in
-                guard let videos = videos?.results else {
-                    return
-                }
-                
-                videos.forEach({ (t: TmdbVideo) in
-                    t.debug()
-                })
-                
-                
-                
-                if videos.count > 0 {
-                    videos[0].debug()
-                    if (videos[0].site! == "YouTube"){
-                        
-                        self.openUrl(url: URL(string: "https://www.youtube.com/watch?v=\(videos[0].key!)")!)
-                    }
-                    
-                }
-                
-                
-                
-                
-                
-            }
-            
-        }
+        disposeBag.insert(d6)
+        disposeBag.insert(d7)
     }
     
     override func viewWillAppear(_ animated: Bool) {

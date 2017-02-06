@@ -22,6 +22,12 @@ class MovieDetailsTableSections: TableSectionsType {
     
     let playTrailerTaps: Observable<Void>
     
+    var playTrailerVisibility: Bool = true {
+        didSet {
+            (_sections[.Backdrop]?.cell as! MovieTableViewCell).playTrailerButton.isHidden = !playTrailerVisibility
+        }
+    }
+    
     init(movie: Movie) {
         self.movie = movie
         
@@ -245,6 +251,8 @@ class MovieDetailsMovieDataSection: TableSectionType{
     var keywords: ReactiveList<Keyword>
     var genres: ReactiveList<Genre>
     
+    private let disposeBag = DisposeBag()
+    
     init(movie: Movie, genres: ReactiveList<Genre>, keywords: ReactiveList<Keyword>) {
         self.movie = movie
         self.genres = genres
@@ -256,13 +264,15 @@ class MovieDetailsMovieDataSection: TableSectionType{
         cell.itemTitleTextColor = UIColor.black
         cell.itemTextColor = UIColor.black
         
-        cell.genres.bindElements(of: genres.asObservable.map { $0.filter { $0.name != nil }.map { $0.name! } })
-        
-        cell.keywords.bindElements(of: keywords.asObservable.map { $0.filter { $0.name != nil }.map { $0.name! } })
+        let d1 = cell.genres.bindElements(of: genres.asObservable.map { $0.filter { $0.name != nil }.map { $0.name! } })
+        let d2 = cell.keywords.bindElements(of: keywords.asObservable.map { $0.filter { $0.name != nil }.map { $0.name! } })
         
         self.cell = cell
         
         reload()
+        
+        disposeBag.insert(d1)
+        disposeBag.insert(d2)
     }
     
     func reload() {
@@ -274,10 +284,9 @@ class MovieDetailsMovieDataSection: TableSectionType{
         
         if let runtime = movie.runtime{
             
-            var h = runtime / 60
-            var m = runtime % 60
-            
-            let runtimeFormatted = "\(h)h \(m)m"
+            let hours = runtime / 60
+            let minutes = runtime % 60
+            let runtimeFormatted = "\(hours)h \(minutes)m"
             
             cell.runtime.text = runtimeFormatted
         }
