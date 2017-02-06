@@ -8,9 +8,9 @@
 
 import UIKit
 
-//MARK: UITableViewCells related to app
+//MARK: UITableView cells
 extension UINib{
-    
+
     static var movieTableViewCell: UINib{
         return UINib(nibName: "MovieTableViewCell", bundle: nil)
     }
@@ -22,10 +22,6 @@ extension UINib{
     static var verticalMovieListTableViewCell: UINib{
         return UINib(nibName: "VerticalMovieListTableViewCell", bundle: nil)
     }
-}
-
-//MARK: UITableView cells
-extension UINib{
     
     static var keywordsTableCell: UINib {
         return UINib(nibName: "KeywordsTableCell", bundle: nil)
@@ -46,8 +42,6 @@ extension UINib{
     static var profileListTableViewCell: UINib{
         return UINib(nibName: "ProfileListTableViewCell", bundle: nil)
     }
-    
-    
     
 }
 
