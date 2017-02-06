@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NRb-tk-hGc">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="2Cc-0r-hx8">
+            <objects>
+                <viewController storyboardIdentifier="Login" id="NRb-tk-hGc" customClass="LoginViewController" customModule="MyFavoriteMovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iFf-4h-RKe"/>
+                        <viewControllerLayoutGuide type="bottom" id="aIC-I1-eMM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GmH-Wb-wSK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="a5E-oT-nTb">
+                                <rect key="frame" x="150" y="230" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J0R-ey-XFJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-eh-kcI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aur-A5-qUO">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IGZ-i8-5Wb">
+                                            <rect key="frame" x="112" y="148" width="97" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umC-Ru-ZbB">
+                                            <rect key="frame" x="121" y="320" width="78" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Sign in">
+                                                <color key="titleColor" red="0.0039215686269999999" green="0.82352941180000006" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heD-wz-HEW">
+                                            <rect key="frame" x="118" y="358" width="85" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Register">
+                                                <color key="titleColor" red="0.0039215686269999999" green="0.82352941180000006" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLU-Qh-Pyd">
+                                            <rect key="frame" x="128" y="390" width="64" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Cancel">
+                                                <color key="titleColor" red="0.0039215686269999999" green="0.82352941180000006" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hjY-dZ-b8E">
+                                            <rect key="frame" x="112" y="90" width="97" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.031372549020000001" green="0.10980392160000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Lqw-eh-kcI" firstAttribute="centerX" secondItem="GmH-Wb-wSK" secondAttribute="centerX" id="ChC-JZ-jpB"/>
+                            <constraint firstItem="J0R-ey-XFJ" firstAttribute="centerY" secondItem="GmH-Wb-wSK" secondAttribute="centerY" id="FCZ-xX-DDH"/>
+                            <constraint firstItem="J0R-ey-XFJ" firstAttribute="centerX" secondItem="GmH-Wb-wSK" secondAttribute="centerX" id="HD9-0b-aTT"/>
+                            <constraint firstItem="Lqw-eh-kcI" firstAttribute="height" secondItem="GmH-Wb-wSK" secondAttribute="height" id="g8I-yk-2mi"/>
+                            <constraint firstItem="Lqw-eh-kcI" firstAttribute="width" secondItem="GmH-Wb-wSK" secondAttribute="width" id="itV-SF-6tS"/>
+                            <constraint firstItem="Lqw-eh-kcI" firstAttribute="centerY" secondItem="GmH-Wb-wSK" secondAttribute="centerY" id="jBQ-kq-IlC"/>
+                            <constraint firstItem="J0R-ey-XFJ" firstAttribute="width" secondItem="GmH-Wb-wSK" secondAttribute="width" id="tdm-fr-sPZ"/>
+                            <constraint firstItem="J0R-ey-XFJ" firstAttribute="height" secondItem="GmH-Wb-wSK" secondAttribute="height" id="vVF-z3-gyT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ai_progress" destination="a5E-oT-nTb" id="wcS-NN-NDT"/>
+                        <outlet property="btn_cancel" destination="qLU-Qh-Pyd" id="WJD-o7-kXo"/>
+                        <outlet property="btn_login" destination="umC-Ru-ZbB" id="nlj-qC-Wfw"/>
+                        <outlet property="btn_register" destination="heD-wz-HEW" id="vpm-Bg-UXM"/>
+                        <outlet property="tf_password" destination="IGZ-i8-5Wb" id="wzc-E4-hmD"/>
+                        <outlet property="tf_username" destination="hjY-dZ-b8E" id="lg6-gp-LR6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="58i-VI-Xo9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-262" y="135"/>
+        </scene>
+    </scenes>
+</document>
