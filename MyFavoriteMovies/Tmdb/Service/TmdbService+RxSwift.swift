@@ -260,7 +260,7 @@ extension TmdbService{
         }
         queries.language = language
         
-        return requestJson(path: path, queries: (queries as Query).mapQueries())
+        return requestJson(path: path, queries: (queries as DiscoverQuery).mapQueries())
     }
     
     /// Discover TV shows by different types of data like average rating, number of votes, genres, the network they aired on and air dates.
@@ -272,7 +272,7 @@ extension TmdbService{
         }
         queries.language = language
         
-        return requestJson(path: path, queries: (queries as Query).mapQueries())
+        return requestJson(path: path, queries: (queries as DiscoverQuery).mapQueries())
     }
     
     
