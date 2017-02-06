@@ -468,7 +468,7 @@ extension TmdbService{
     }
     
     /// Rate a movie.
-    func rateMovie(movieId: Int, value: RatingScale) -> Observable<PostRateMovieResponse> {
+    func rateMovie(movieId: Int, value: RatingScale) -> Observable<TmdbResponse> {
         let body = PostRateMovieBody(value: value)
         let path = "/movie/\(movieId)/rating"
         
@@ -576,7 +576,7 @@ extension TmdbService{
     //MARK: Networks
     
     /// Get the details of a network.
-    func getNetworkDetails(networkId: Int) -> Observable<GetNetworkDetailsResponse> {
+    func getNetworkDetails(networkId: Int) -> Observable<TmdbNetwork> {
         let path = "/network/\(networkId)"
         return requestJson(path: path)
     }
@@ -973,7 +973,7 @@ extension TmdbService{
     }
     
     /// Rate a TV show.
-    func rateTVShow(tvId: Int, value: RatingScale) -> Observable<PostRateTVShowResponse> {
+    func rateTVShow(tvId: Int, value: RatingScale) -> Observable<TmdbResponse> {
         let path = "/tv/\(tvId)/rating"
         
         let body = PostRateTVShowBody(value: value)
@@ -1169,7 +1169,7 @@ extension TmdbService{
     }
     
     /// Rate a TV episode.
-    func rateTVEpisode(tvId: Int, seasonNumber: Int, episodeNumber: Int, value: RatingScale) -> Observable<PostRateTVEpisodeResponse> {
+    func rateTVEpisode(tvId: Int, seasonNumber: Int, episodeNumber: Int, value: RatingScale) -> Observable<TmdbResponse> {
         let path = "/tv/\(tvId)/season/\(seasonNumber)/episode/\(episodeNumber)/rating"
         
         let body = PostRateTVEpisodeBody(value: value)
