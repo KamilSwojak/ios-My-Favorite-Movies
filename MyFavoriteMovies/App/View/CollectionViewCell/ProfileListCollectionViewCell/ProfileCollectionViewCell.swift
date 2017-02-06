@@ -18,7 +18,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         picture.layer.masksToBounds = true
         picture.layer.cornerRadius = picture.frame.width / 2
-        picture.layer.borderColor = Color.secondary.cgColor
+        picture.layer.borderColor = UIColor.secondary.cgColor
         picture.layer.borderWidth = 2.0
     }
 }

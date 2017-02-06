@@ -24,10 +24,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
         layer.masksToBounds = false
         layer.cornerRadius = 3.0
         layer.shadowOffset = CGSize(width: 1, height: 1)
-        layer.shadowColor = Color.secondary.cgColor
+        layer.shadowColor = UIColor.secondary.cgColor
         layer.shadowOpacity = 0.6
         
-        layer.borderColor = Color.secondary.cgColor
+        layer.borderColor = UIColor.secondary.cgColor
     }
     
 }
