@@ -90,7 +90,7 @@ class MovieDetailsBackdropSection: TableSectionType{
         
         let cell = UITableViewCell.movie
         
-        cell.backgroundColor = Color.secondary
+        cell.backgroundColor = UIColor.secondary
         cell.title.textColor = UIColor.white
         cell.subtitle.textColor = UIColor.lightGray
         cell.userScore.fontColor = UIColor.white
@@ -141,7 +141,7 @@ class MovieDetailsOverviewSection: TableSectionType{
         let cell = Bundle.main.loadNibNamed("LabelTableViewCell", owner: nil, options: nil)!.first as! LabelTableViewCell
         cell.label.text = movie.overview
         
-        cell.backgroundColor = Color.secondary
+        cell.backgroundColor = UIColor.secondary
         cell.label.textColor = UIColor.white
         
         self.cell = cell
@@ -178,10 +178,10 @@ class MovieDetailsFeaturedCrewSection: TableSectionType{
         
         disposeBag.insert(d1)
         
-        cell.collection.backgroundColor = Color.secondary
-        cell.cellBackgroundColor = Color.secondary
-        cell.cellSubTitleBackgroundColor = Color.secondary
-        cell.cellTitleBackgroundColor = Color.secondary
+        cell.collection.backgroundColor = UIColor.secondary
+        cell.cellBackgroundColor = UIColor.secondary
+        cell.cellSubTitleBackgroundColor = UIColor.secondary
+        cell.cellTitleBackgroundColor = UIColor.secondary
         cell.cellTitleTextColor = UIColor.white
         cell.cellSubTitleTextColor = UIColor.lightGray
         
@@ -219,11 +219,11 @@ class MovieDetailsTopBilledCastSection: TableSectionType{
         
         disposeBag.insert(d1)
         
-        cell.backgroundColor = Color.secondary
-        cell.collection.backgroundColor = Color.secondary
-        cell.cellBackgroundColor = Color.secondary
-        cell.cellLabel1BackgroundColor = Color.secondary
-        cell.cellLabel2BackgroundColor = Color.secondary
+        cell.backgroundColor = UIColor.secondary
+        cell.collection.backgroundColor = UIColor.secondary
+        cell.cellBackgroundColor = UIColor.secondary
+        cell.cellLabel1BackgroundColor = UIColor.secondary
+        cell.cellLabel2BackgroundColor = UIColor.secondary
         cell.cellLabel1TextColor = UIColor.white
         cell.cellLabel2TextColor = UIColor.lightText
         

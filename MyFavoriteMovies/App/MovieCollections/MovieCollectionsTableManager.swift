@@ -52,7 +52,7 @@ class MovieCollectionsTableManager: NSObject, UITableViewDelegate, UITableViewDa
         let header = (view as? UITableViewHeaderFooterView)
         header?.contentView.backgroundColor = UIColor.white
         header?.textLabel?.textAlignment = NSTextAlignment.natural
-        header?.textLabel?.textColor = Color.secondary
+        header?.textLabel?.textColor = UIColor.secondary
     }
 
 }

@@ -24,13 +24,13 @@ class SidePanelViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.contentInset.top = UIApplication.shared.statusBarFrame.height + 44 // status bar + nav bar
-        self.view.backgroundColor = Color.secondary
+        self.view.backgroundColor = UIColor.secondary
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        cell.backgroundColor = Color.secondary
+        cell.backgroundColor = UIColor.secondary
         cell.selectedBackgroundView = UIView()
         
         guard let item = SidePanelItem.from(indexPath: indexPath) else { return cell}
@@ -44,8 +44,8 @@ class SidePanelViewController: UITableViewController {
         guard let item = SidePanelItem.from(indexPath: indexPath) else { return }
         
         selectedCell.imageView?.image = UIImage(named: item.imageNameSelected)
-        selectedCell.selectedBackgroundView?.backgroundColor = Color.primary
-        selectedCell.textLabel?.textColor = Color.secondary
+        selectedCell.selectedBackgroundView?.backgroundColor = UIColor.primary
+        selectedCell.textLabel?.textColor = UIColor.secondary
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -53,16 +53,16 @@ class SidePanelViewController: UITableViewController {
         guard let item = SidePanelItem.from(indexPath: indexPath) else { return }
         
         deselectedCell.imageView?.image = UIImage(named: item.imageNameNormal)
-        deselectedCell.selectedBackgroundView?.backgroundColor = Color.secondary
-        deselectedCell.textLabel?.textColor = Color.primary
+        deselectedCell.selectedBackgroundView?.backgroundColor = UIColor.secondary
+        deselectedCell.textLabel?.textColor = UIColor.primary
     }
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = Color.secondary
+        view.tintColor = UIColor.secondary
 
         guard let view = (view as? UITableViewHeaderFooterView) else { return }
         
-        view.textLabel?.textColor = Color.primary
+        view.textLabel?.textColor = UIColor.primary
     }
 
 }

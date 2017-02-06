@@ -137,9 +137,9 @@ extension MovieDetailsViewController: UITableViewDelegate {
             
         } else {
             
-            headerView.backgroundColor = Color.secondary
-            label.backgroundColor = Color.secondary
-            label.textColor = Color.primary
+            headerView.backgroundColor = UIColor.secondary
+            label.backgroundColor = UIColor.secondary
+            label.textColor = UIColor.primary
             
         }
         
