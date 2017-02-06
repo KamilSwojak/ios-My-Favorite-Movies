@@ -10,10 +10,6 @@ import UIKit
 
 extension UICollectionViewCell{
     
-    static var keyword: KeywordCollectionViewCell {
-        return Bundle.main.loadNibNamed("KeywordCollectionViewCell", owner: self, options: nil)?.first as! KeywordCollectionViewCell
-    }
-    
     static var profile: ProfileCollectionViewCell {
                 return Bundle.main.loadNibNamed("ProfileCollectionViewCell", owner: self, options: nil)?.first as! ProfileCollectionViewCell
     }
