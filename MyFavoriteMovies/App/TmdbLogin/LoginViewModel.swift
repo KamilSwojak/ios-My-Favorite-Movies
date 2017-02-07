@@ -50,24 +50,15 @@ final class LoginViewModel: BaseViewModel<LoginInput, LoginModelOutput> {
                 self.auth.login(username: $0.username, password: $0.password) }
             .subscribe { (event) in
                 
-                if let error = event.error {
+                if let requestError = (event.error as? RequestError) {
                     
-                    print(error)
-                    
-                    if let requestError = (error as? RequestError) {
+                    switch requestError{
                         
-                        print(requestError)
+                    case .RequestUnsuccesful(httpCode:_, tmdbCode:_, message: let tmdbMessage):
+                        messageSubject.onNext(tmdbMessage)
                         
-                        switch requestError{
-                        case .RequestUnsuccesful(httpCode:_, tmdbCode:_, message: let tmdbMessage):
-                            
-                            messageSubject.onNext(tmdbMessage)
-                            
-                        default: break;
-                        }
-                        
+                    default: break;
                     }
-                
                 }
                 
                 guard let result = event.element else { return }
