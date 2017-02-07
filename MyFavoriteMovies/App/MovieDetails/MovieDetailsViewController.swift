@@ -25,9 +25,10 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 180
+//        tableView.estimatedRowHeight = 180
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0.01))
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0.01))
+        
         
         model = MovieDetailsViewModel(input: MovieDetailsViewOutput(movie: movie))
         

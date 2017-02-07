@@ -124,7 +124,21 @@ class MovieDetailsTableManager: NSObject, UITableViewDelegate, UITableViewDataSo
             return 65
         }
     }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0.1))
+        footer.backgroundColor = UIColor.secondary
+        return footer
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 8
+    }
 
+    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
     enum SectionIndex : Int {
         case Backdrop = 0
         case Overview = 1
