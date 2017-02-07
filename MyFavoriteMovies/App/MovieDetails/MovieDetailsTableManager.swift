@@ -24,12 +24,12 @@ class MovieDetailsTableManager: NSObject, UITableViewDelegate, UITableViewDataSo
     let genres: ReactiveList<Genre>
     
     var playTrailerTaps: Observable<Void> {
-        return (sections[SectionsIndices.Backdrop.rawValue].cell as! MovieTableViewCell).playTrailerButton.tap
+        return (sections[SectionIndex.Backdrop.rawValue].cell as! MovieTableViewCell).playTrailerButton.tap
     }
     
     var playTrailerVisibility: Bool = true {
         didSet {
-            (sections[SectionsIndices.Backdrop.rawValue].cell as! MovieTableViewCell).playTrailerButton.isHidden = !playTrailerVisibility
+            (sections[SectionIndex.Backdrop.rawValue].cell as! MovieTableViewCell).playTrailerButton.isHidden = !playTrailerVisibility
         }
     }
 
@@ -53,8 +53,8 @@ class MovieDetailsTableManager: NSObject, UITableViewDelegate, UITableViewDataSo
     }
     
     func reloadData() {
-        (sections[SectionsIndices.Data.rawValue] as? MovieDetailsMovieDataSection)?.movie = self.movie
-        (sections[SectionsIndices.Data.rawValue] as? MovieDetailsMovieDataSection)?.reload()
+        (sections[SectionIndex.Data.rawValue] as? MovieDetailsMovieDataSection)?.movie = self.movie
+        (sections[SectionIndex.Data.rawValue] as? MovieDetailsMovieDataSection)?.reload()
     }
     
     //MARK: Data source
@@ -118,14 +118,14 @@ class MovieDetailsTableManager: NSObject, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        if section == SectionsIndices.Backdrop.rawValue  {
+        if section == SectionIndex.Backdrop.rawValue  {
             return 0.0
         } else {
             return 65
         }
     }
 
-    enum SectionsIndices : Int {
+    enum SectionIndex : Int {
         case Backdrop = 0
         case Overview = 1
         case Crew = 2
