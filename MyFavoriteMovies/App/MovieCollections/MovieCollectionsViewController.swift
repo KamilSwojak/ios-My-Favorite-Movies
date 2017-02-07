@@ -20,7 +20,15 @@ class MovieCollectionsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableManager = MovieCollectionsTableManager(sections: .NowPlaying, .Upcoming, .Popular, .TopRated)
+        movieCollectionsTable.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: movieCollectionsTable.frame.width, height: 0.01))
+        movieCollectionsTable.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: movieCollectionsTable.frame.width, height: 0.01))
+        
+        tableManager = MovieCollectionsTableManager(sections: .NowPlaying)
+        tableManager.sections.append(section: .Upcoming)
+        tableManager.sections.append(section: .Popular)
+        tableManager.sections.append(section: .TopRated)
+        tableManager.sections.append(section: .Genre(.Comedy))
+        tableManager.sections.append(section: .Genre(.Animation))
         
         movieCollectionsTable.delegate = tableManager
         movieCollectionsTable.dataSource = tableManager
@@ -34,7 +42,5 @@ class MovieCollectionsViewController: UIViewController{
         }
         
         disposeBag.insert(d1)
-        
-        tableManager.sections.append(section: .Genre(.Adventure))
     }
 }
