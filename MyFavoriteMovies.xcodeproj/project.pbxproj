@@ -938,8 +938,8 @@
 			children = (
 				7EC8C7D01E486B0100A4CB16 /* MovieCollections.storyboard */,
 				7EC8C7D41E486B0100A4CB16 /* MovieCollectionsViewController.swift */,
-				7EC8C7D21E486B0100A4CB16 /* MovieCollectionsSections.swift */,
 				7EC8C7D31E486B0100A4CB16 /* MovieCollectionsTableManager.swift */,
+				7EC8C7D21E486B0100A4CB16 /* MovieCollectionsSections.swift */,
 			);
 			path = MovieCollections;
 			sourceTree = "<group>";
