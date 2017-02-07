@@ -11,70 +11,47 @@ import RxSwift
 
 class MovieDetailsTableSections: TableSectionsType {
     
-    internal var sections: [TableSectionType] = []
-    private var _sections: [Section : TableSectionType] = [:]
+    internal var sections: [TableSectionType]
     
-    var movie: Movie
-    let crew = ReactiveList<MovieCrew>()
-    let cast = ReactiveList<MovieCast>()
-    let keywords = ReactiveList<Keyword>()
-    let genres = ReactiveList<Genre>()
-    
-    let playTrailerTaps: Observable<Void>
-    
-    var playTrailerVisibility: Bool = true {
-        didSet {
-            (_sections[.Backdrop]?.cell as! MovieTableViewCell).playTrailerButton.isHidden = !playTrailerVisibility
-        }
-    }
-    
-    init(movie: Movie) {
-        self.movie = movie
-        
-        let backdropSection = MovieDetailsBackdropSection(movie: movie)
-        let overviewSection = MovieDetailsOverviewSection(movie: movie)
-        let crewSection = MovieDetailsFeaturedCrewSection(movie: movie, crew: crew)
-        let castSection = MovieDetailsTopBilledCastSection(movie: movie, cast: cast)
-        let dataSection = MovieDetailsMovieDataSection(movie: movie, genres: genres, keywords: keywords)
-        
-        _sections[.Backdrop] = backdropSection
-        _sections[.Overview] = overviewSection
-        _sections[.Crew] = crewSection
-        _sections[.Cast] = castSection
-        _sections[.Data] = dataSection
-        
-        sections.append(backdropSection)
-        sections.append(overviewSection)
-        sections.append(crewSection)
-        sections.append(castSection)
-        sections.append(dataSection)
-        
-        playTrailerTaps = backdropSection.playTrailerTaps
-    }
-    
-    func reloadData() {
-        (_sections[.Data] as? MovieDetailsMovieDataSection)?.movie = self.movie
-        (_sections[.Data] as? MovieDetailsMovieDataSection)?.reload()
+    init(sections: [Section]) {
+        self.sections = sections.map { $0.get }
     }
     
     var count: Int {
         return sections.count
     }
     
-    subscript(_ index: Section) -> TableSectionType {
-        return sections[index.rawValue]
-    }
-    
     subscript(_ index: Int) -> TableSectionType {
         return sections[index]
     }
     
-    enum Section : Int {
-        case Backdrop = 0
-        case Overview = 1
-        case Crew = 2
-        case Cast = 3
-        case Data = 4
+    enum Section {
+        case Backdrop(_: Movie)
+        case Overview(_: Movie)
+        case Crew(_: ReactiveList<MovieCrew>)
+        case Cast(_: ReactiveList<MovieCast>)
+        case Data(_: Movie, _: ReactiveList<Genre>, _: ReactiveList<Keyword>)
+        
+        var get: TableSectionType {
+            
+            switch self {
+                
+            case .Backdrop(let movie):
+                return MovieDetailsBackdropSection(movie: movie)
+                
+            case .Overview(let movie) :
+                return MovieDetailsOverviewSection(movie: movie)
+                
+            case .Crew(let crew):
+                return MovieDetailsFeaturedCrewSection(crew: crew)
+                
+            case .Cast(let cast):
+                return MovieDetailsTopBilledCastSection(cast: cast)
+                
+            case .Data(let movie, let genres, let keywords):
+                return MovieDetailsMovieDataSection(movie: movie, genres: genres, keywords: keywords)
+            }
+        }
     }
 }
 
@@ -82,9 +59,11 @@ class MovieDetailsTableSections: TableSectionsType {
 class MovieDetailsBackdropSection: TableSectionType{
     
     var title: String?
+    
     var movie: Movie!
-
+    
     var cell: UITableViewCell
+    
     var height: CGFloat{
         return (cell as! MovieTableViewCell).requestedHeight
     }
@@ -133,6 +112,7 @@ class MovieDetailsBackdropSection: TableSectionType{
 class MovieDetailsOverviewSection: TableSectionType{
     
     var movie: Movie!
+    
     var title: String? = "Overview"
     
     var cell: UITableViewCell
@@ -157,17 +137,17 @@ class MovieDetailsOverviewSection: TableSectionType{
 //MARK: Featured Crew
 class MovieDetailsFeaturedCrewSection: TableSectionType{
     
-    var movie: Movie!
     var title: String? = "Featured Crew"
+    
     var crew: ReactiveList<MovieCrew>
     
     var cell: UITableViewCell
+    
     var height: CGFloat = 180
     
     let disposeBag = DisposeBag()
     
-    init(movie: Movie, crew: ReactiveList<MovieCrew>) {
-        self.movie = movie
+    init(crew: ReactiveList<MovieCrew>) {
         self.crew = crew
         
         let cell = UITableViewCell.subtitleList
@@ -198,17 +178,17 @@ class MovieDetailsFeaturedCrewSection: TableSectionType{
 //MARK: Top Billed Cast
 class MovieDetailsTopBilledCastSection: TableSectionType{
     
-    var movie: Movie!
     var title: String? = "Top Billed Cast"
     
-    var cell: UITableViewCell
-    var height: CGFloat = 210
     var cast: ReactiveList<MovieCast>
     
-    let disposeBag = DisposeBag()
+    var cell: UITableViewCell
     
-    init(movie: Movie, cast: ReactiveList<MovieCast>) {
-        self.movie = movie
+    var height: CGFloat = 210
+    
+    private let disposeBag = DisposeBag()
+    
+    init(cast: ReactiveList<MovieCast>) {
         self.cast = cast
         
         let cell = UITableViewCell.profileList
@@ -240,16 +220,19 @@ class MovieDetailsTopBilledCastSection: TableSectionType{
 
 //MARK: Movie Facts
 class MovieDetailsMovieDataSection: TableSectionType{
-    var movie: Movie!
-    var title: String? = "Movie Data"
     
-    var cell: UITableViewCell
-    var height: CGFloat {
-        return (cell as! MovieDataTableViewCell).requestedHeight
-    }
+    var movie: Movie!
     
     var keywords: ReactiveList<Keyword>
     var genres: ReactiveList<Genre>
+    
+    var title: String? = "Movie Data"
+    
+    var cell: UITableViewCell
+    
+    var height: CGFloat {
+        return (cell as! MovieDataTableViewCell).requestedHeight
+    }
     
     private let disposeBag = DisposeBag()
     
@@ -305,7 +288,7 @@ class MovieDetailsMovieDataSection: TableSectionType{
             
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
-
+            
             if let date = formatter.date(from: releaseDate) {
                 formatter.dateStyle = .medium
                 cell.releaseInformation.text = formatter.string(from: date)

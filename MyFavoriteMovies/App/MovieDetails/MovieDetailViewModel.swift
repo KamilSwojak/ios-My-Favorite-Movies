@@ -33,41 +33,48 @@ final class MovieDetailsViewModel: BaseViewModel<MovieDetailsViewOutput, MovieDe
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
         
         let trailers =
-        Tmdb.shared.api
-            .getMovieVideos(movieId: movieId)
-            .filter { (movieVideos: GetMovieVideosResponse) -> Bool in
-                guard let results = movieVideos.results else {
-                    return false
+            Tmdb.shared.api
+                .getMovieVideos(movieId: movieId)
+                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+                .filter { (movieVideos: GetMovieVideosResponse) -> Bool in
+                    guard let results = movieVideos.results else {
+                        return false
+                    }
+                    
+                    guard results.count > 0 else {
+                        return false
+                    }
+                    
+                    return true
                 }
-                
-                guard results.count > 0 else {
-                    return false
-                }
-                
-                return true
-            }
-            .map { $0.results! }
-            .map { (videos: [TmdbVideo]) -> [URL] in
-                
-                let youtubeTrailers =
-                    videos
-                        .filter { $0.key != nil && $0.site != nil && $0.type != nil } // check nils
-                        .map { (type: $0.type!, site: $0.site!, key: $0.key!) } // map to (type:TmdbVideoType,site:String,key:String)
-                        .filter { $0.type.rawValue == TmdbVideoType.Trailer.rawValue && $0.site == "YouTube" } //find trailers on youtube
-                
-                let youtubeTrailerUrls =
-                youtubeTrailers
-                    .map { URL(string: "https://www.youtube.com/watch?v=\($0.key)") }
-                    .filter { $0 != nil }
-                    .map { $0! }
-                
-                return youtubeTrailerUrls
+                .map { $0.results! }
+                .map { (videos: [TmdbVideo]) -> [URL] in
+                    
+                    let youtubeTrailers =
+                        videos
+                            .filter { $0.key != nil && $0.site != nil && $0.type != nil } // check nils
+                            .map { (type: $0.type!, site: $0.site!, key: $0.key!) } // map to (type:TmdbVideoType,site:String,key:String)
+                            .filter { $0.type.rawValue == TmdbVideoType.Trailer.rawValue && $0.site == "YouTube" } //find trailers on youtube
+                    
+                    let youtubeTrailerUrls =
+                        youtubeTrailers
+                            .map { URL(string: "https://www.youtube.com/watch?v=\($0.key)") }
+                            .filter { $0 != nil }
+                            .map { $0! }
+                    
+                    return youtubeTrailerUrls
         }
         
-        let crew = credits.filter { $0.crew != nil }.map { $0.crew! }
-        let cast = credits.filter { $0.cast != nil }.map { $0.cast! }
-        let genres = details.filter { ($0.genres != nil) }.map { $0.genres! }
-        let keywords = movieKeywords.filter { ($0.keywords != nil) }.map { $0.keywords! }
+        let crew = ReactiveList<MovieCrew>()
+        let cast = ReactiveList<MovieCast>()
+        let genres = ReactiveList<Genre>()
+        let keywords = ReactiveList<Keyword>()
+        
+        let d1 = crew.bindElements(of: credits.filter { $0.crew != nil }.map { $0.crew! })
+        let d2 = cast.bindElements(of: credits.filter { $0.cast != nil }.map { $0.cast! })
+        let d3 = genres.bindElements(of: details.filter { ($0.genres != nil) }.map { $0.genres! })
+        let d4 = keywords.bindElements(of: movieKeywords.filter { ($0.keywords != nil) }.map { $0.keywords! })
+        
         let trailerButtonVisibility = trailers.map { $0.count > 0 }
         
         output = MovieDetailsViewModelOutput(
@@ -78,5 +85,10 @@ final class MovieDetailsViewModel: BaseViewModel<MovieDetailsViewOutput, MovieDe
             genres: genres,
             trailers: trailers,
             trailerButtonVisibility: trailerButtonVisibility)
+        
+        disposeBag.insert(d1)
+        disposeBag.insert(d2)
+        disposeBag.insert(d3)
+        disposeBag.insert(d4)
     }
 }

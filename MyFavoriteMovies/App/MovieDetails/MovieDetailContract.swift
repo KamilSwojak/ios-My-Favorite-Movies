@@ -15,10 +15,10 @@ struct MovieDetailsViewOutput: ViewModelInputType{
 
 struct MovieDetailsViewModelOutput: ViewModelOutputType{
     var movie: Observable<Movie>
-    var crew: Observable<[MovieCrew]>
-    var cast: Observable<[MovieCast]>
-    var keywords: Observable<[Keyword]>
-    var genres: Observable<[Genre]>
+    var crew: ReactiveList<MovieCrew>
+    var cast: ReactiveList<MovieCast>
+    var keywords: ReactiveList<Keyword>
+    var genres: ReactiveList<Genre>
     var trailers: Observable<[URL]>
     var trailerButtonVisibility: Observable<Bool>
 }
