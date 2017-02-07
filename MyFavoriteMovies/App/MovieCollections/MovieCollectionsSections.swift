@@ -117,28 +117,46 @@ class VerticalMovieListSection : TableSectionType {
 class NowPlayingMoviesTableSection: VerticalMovieListSection {
     
     init() {
-        let movies = Tmdb.shared.api.getNowPlayingMovies().filter { $0.results != nil }.map { $0.results! }
+        let movies = Tmdb.shared.api
+            .getNowPlayingMovies()
+            .filter { $0.results != nil }
+            .map { $0.results! }
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
         super.init(movies: movies, title: "Now Playing")
     }
 }
 class PopularMoviesTableSection: VerticalMovieListSection{
     
     init() {
-        let movies = Tmdb.shared.api.getPopularMovies().filter { $0.results != nil }.map { $0.results! }
+        let movies = Tmdb.shared.api
+            .getPopularMovies()
+            .filter { $0.results != nil }
+            .map { $0.results! }
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
         super.init(movies: movies, title: "Popular")
     }
 }
 class TopRatedMoviesTableSection: VerticalMovieListSection {
     
     init() {
-        let movies = Tmdb.shared.api.getTopRatedMovies().filter { $0.results != nil }.map { $0.results! }
+        let movies = Tmdb.shared.api
+            .getTopRatedMovies()
+            .filter { $0.results != nil }
+            .map { $0.results! }
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+        
         super.init(movies: movies, title: "Top Rated")
     }
 }
 class UpcomingMoviesTableSection: VerticalMovieListSection {
     
     init() {
-        let movies = Tmdb.shared.api.getUpcomingMovies().filter { $0.results != nil }.map { $0.results! }
+        let movies = Tmdb.shared.api
+            .getUpcomingMovies()
+            .filter { $0.results != nil }
+            .map { $0.results! }
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+        
         super.init(movies: movies, title: "Upcoming")
     }
 }
@@ -146,7 +164,11 @@ class UpcomingMoviesTableSection: VerticalMovieListSection {
 class GenresMovieTableSection: VerticalMovieListSection {
     
     init(genre: MovieGenre) {
-        let movies = Tmdb.shared.api.getMoviesByGenre(genreId: genre).filter { $0.results != nil }.map { $0.results! }
+        let movies = Tmdb.shared.api
+            .getMoviesByGenre(genreId: genre)
+            .filter { $0.results != nil }
+            .map { $0.results! }
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
         super.init(movies: movies, title: genre.humanDescription)
     }
 }
