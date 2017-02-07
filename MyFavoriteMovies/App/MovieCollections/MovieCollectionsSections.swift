@@ -37,7 +37,7 @@ class MovieCollectionsSections: TableSectionsType {
     func append(section: Section)  {
         self.sections.append(section.get)
         
-        let index = self.self.sections.count - 1
+        let index = self.sections.count - 1
         let d = (self.sections[index] as! VerticalMovieListSection).selected.map { (section: index, row: $0.row, movie: $0.movie) }.bindTo(self.itemSelected)
         disposeBag.insert(d)
     }
