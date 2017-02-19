@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Movie Details View ControllerV3-->
+        <!--Movie Details View Controller-->
         <scene sceneID="l1u-zf-FSN">
             <objects>
-                <viewController storyboardIdentifier="MovieDetailsViewController" id="nvG-it-TZp" customClass="MovieDetailsViewControllerV3" customModule="MyFavoriteMovies" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailsViewController" id="nvG-it-TZp" customClass="MovieDetailsViewController" customModule="MyFavoriteMovies" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I8M-CA-QsH"/>
                         <viewControllerLayoutGuide type="bottom" id="ajl-MH-Pj6"/>
