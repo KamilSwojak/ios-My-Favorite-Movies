@@ -28,9 +28,7 @@ struct TmdbUser{
     var tvShowsWatchlist: Variable<[TVShow]>
     
     var syncSubject = ReplaySubject<Bool>.create(bufferSize: 1)
-    var syncing: Observable<Bool>{
-        return syncSubject.startWith(false)
-    }
+    var syncing: Observable<Bool>
     
     init(id: Int, name: String, username: String, gravatarHash: String?, includeAdult: Bool) {
         self.id = id
@@ -38,6 +36,8 @@ struct TmdbUser{
         self.username = username
         self.gravatarHash = gravatarHash
         self.includeAdult = includeAdult
+        
+        syncing = syncSubject.startWith(false)
         
         favoriteMovies = Variable<[Movie]>([])
         favoriteTvShows = Variable<[TVShow]>([])
