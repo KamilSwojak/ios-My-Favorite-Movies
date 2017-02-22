@@ -10,9 +10,11 @@ import Foundation
 import RxSwift
 
 extension DisposeBag {
-    func insert(disposables: Disposable...) {
+    
+    func insert(_ disposables: Disposable...) {
         for d in disposables {
             insert(d)
         }
     }
+    
 }
