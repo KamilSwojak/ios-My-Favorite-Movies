@@ -20,11 +20,16 @@ extension String {
 }
 
 //MARK: Format
-enum StringFormatType {
+extension String {
     
-    case Date(format: DateFormatter.Format, style: DateFormatter.Style)
+    enum StringFormatType {
+        
+        case Date(format: DateFormatter.Format, style: DateFormatter.Style)
+        
+    }
     
 }
+
 
 extension String {
     
