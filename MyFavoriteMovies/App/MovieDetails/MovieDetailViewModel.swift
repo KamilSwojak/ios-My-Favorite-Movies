@@ -36,7 +36,7 @@ final class MovieDetailsViewModel: BaseViewModel<MovieDetailsViewOutput, MovieDe
             Tmdb.shared.api
                 .getMovieVideos(movieId: movieId)
                 .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-                .filter { (movieVideos: GetMovieVideosResponse) -> Bool in
+                .filter { (movieVideos: GetMovieVideosResponse) -> Bool in // has trailers?
                     guard let results = movieVideos.results else {
                         return false
                     }
@@ -48,7 +48,7 @@ final class MovieDetailsViewModel: BaseViewModel<MovieDetailsViewOutput, MovieDe
                     return true
                 }
                 .map { $0.results! }
-                .map { (videos: [TmdbVideo]) -> [URL] in
+                .map { (videos: [TmdbVideo]) -> [URL] in // map to [URL] on youtube
                     
                     let youtubeTrailers =
                         videos
@@ -65,17 +65,43 @@ final class MovieDetailsViewModel: BaseViewModel<MovieDetailsViewOutput, MovieDe
                     return youtubeTrailerUrls
         }
         
-        let crew = ReactiveList<MovieCrew>()
-        let cast = ReactiveList<MovieCast>()
-        let genres = ReactiveList<Genre>()
-        let keywords = ReactiveList<Keyword>()
-        
-        let d1 = crew.bindElements(of: credits.filter { $0.crew != nil }.map { $0.crew! })
-        let d2 = cast.bindElements(of: credits.filter { $0.cast != nil }.map { $0.cast! })
-        let d3 = genres.bindElements(of: details.filter { ($0.genres != nil) }.map { $0.genres! })
-        let d4 = keywords.bindElements(of: movieKeywords.filter { ($0.keywords != nil) }.map { $0.keywords! })
-        
         let trailerButtonVisibility = trailers.map { $0.count > 0 }
+        
+        
+        let crew = credits.filter { $0.crew != nil }.map { $0.crew! }
+        let cast = credits.filter { $0.cast != nil }.map { $0.cast! }
+        let genres = details.filter { ($0.genres != nil) }.map { $0.genres! }
+        let keywords = movieKeywords.filter { ($0.keywords != nil) }.map { $0.keywords! }
+        
+        
+        let eventSubject = PublishSubject<MovieDetailsEvent>()
+        let event = eventSubject.asObservable()
+        
+        let d5 = input.bookmarkTaps.map { MovieDetailsEvent.Bookmark }.bindTo(eventSubject)
+        let d6 = input.favoriteTaps.map { MovieDetailsEvent.Favorite }.bindTo(eventSubject)
+        let d7 = input.userListsTaps.map { MovieDetailsEvent.AddToLists }.bindTo(eventSubject)
+        let d8 = input.rateTaps.map { MovieDetailsEvent.Rate }.bindTo(eventSubject)
+        let d9 = input.genreTap.map { MovieDetailsEvent.SelectedTag($0) }.bindTo(eventSubject)
+        let d10 = input.keywordTap.map { MovieDetailsEvent.SelectedTag($0) }.bindTo(eventSubject)
+        let d11 = input.crewTap.map { MovieDetailsEvent.SelectedCrew($0.crew) }.bindTo(eventSubject)
+        let d12 = input.castTap.map { MovieDetailsEvent.SelectedCast($0.cast) }.bindTo(eventSubject)
+        
+        let d13 = input
+            .homepageLinkTap
+            .withLatestFrom(details)
+            .filter { $0.homepage != nil }
+            .map { $0.homepage! }
+            .map { URL(string: $0) }
+            .filter { $0 != nil }
+            .map { MovieDetailsEvent.Open($0!) }
+            .bindTo(eventSubject)
+        
+        let d14 = input
+            .playTrailerTaps
+            .withLatestFrom(trailers)
+            .filter { $0.count > 0 }
+            .map { MovieDetailsEvent.Trailer($0[0]) }
+            .bindTo(eventSubject)
         
         output = MovieDetailsViewModelOutput(
             movie: details,
@@ -83,12 +109,9 @@ final class MovieDetailsViewModel: BaseViewModel<MovieDetailsViewOutput, MovieDe
             cast: cast,
             keywords: keywords,
             genres: genres,
-            trailers: trailers,
-            trailerButtonVisibility: trailerButtonVisibility)
+            trailerButtonVisibility: trailerButtonVisibility,
+            event: event)
         
-        disposeBag.insert(d1)
-        disposeBag.insert(d2)
-        disposeBag.insert(d3)
-        disposeBag.insert(d4)
+        disposeBag.insert(d5, d6, d7, d8, d9, d10, d11, d12, d13, d14)
     }
 }
