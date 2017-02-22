@@ -9,64 +9,173 @@
 import UIKit
 import MBCircularProgressBar
 import RxSwift
-import SDWebImage
-
-//still need to fix iphone 7 plus
 
 class MovieDetailsViewController: UIViewController {
-    
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var backdrop: TmdbImageView! /* not always visible - check if exists */
     @IBOutlet weak var poster: TmdbImageView!
-    @IBOutlet weak var movieTitle: UILabel!
-    @IBOutlet weak var year: UILabel!
-    @IBOutlet weak var rating: MBCircularProgressBarView!
-    @IBOutlet weak var playTrailer: UIButton!
-    @IBOutlet weak var overviewTitle: UILabel!
-    @IBOutlet weak var overview: UILabel!
-    @IBOutlet weak var featuredCrewTitle: UILabel!
+    @IBOutlet weak var movieTitleLabel: UITextView!
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var ratingView: MBCircularProgressBarView!
+    @IBOutlet weak var playTrailerButton: UIButton!
+    @IBOutlet weak var overviewTitleLabel: UILabel!
+    @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var featuredCrewTitleLabel: UILabel!
     @IBOutlet weak var featuredCrewCollection: UICollectionView!
-    @IBOutlet weak var topBilledCastTitle: UILabel!
+    @IBOutlet weak var topBilledCastTitleLabel: UILabel!
     @IBOutlet weak var topBilledCastCollection: UICollectionView!
+
+    @IBOutlet weak var userListsBarButton: UIBarButtonItem!
+    @IBOutlet weak var favoriteBarButton: UIBarButtonItem!
+    @IBOutlet weak var bookmarkBarButton: UIBarButtonItem!
+    @IBOutlet weak var rateBarButton: UIBarButtonItem!
+    
+    @IBOutlet weak var movieDataTitleLabel: UILabel!
+    @IBOutlet weak var factsTitleLabel: UILabel!
+    @IBOutlet weak var statusTitleLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var originalLanguageTitleLabel: UILabel!
+    @IBOutlet weak var originalLanguageLabel: UILabel!
+    @IBOutlet weak var runtimeTitleLabel: UILabel!
+    @IBOutlet weak var runtimeLabel: UILabel!
+    @IBOutlet weak var budgetTitleLabel: UILabel!
+    @IBOutlet weak var budgetLabel: UILabel!
+    @IBOutlet weak var revenueTitleLabel: UILabel!
+    @IBOutlet weak var revenueLabel: UILabel!
+    @IBOutlet weak var homepageTitleLabel: UILabel!
+    @IBOutlet weak var homepageLabel: UILabel!
+    @IBOutlet weak var releaseInformationTitleLabel: UILabel!
+    @IBOutlet weak var releaseInformationLabel: UILabel!
+    
+    @IBOutlet weak var genresTitleLabel: UILabel!
+    @IBOutlet weak var genresTagListView: TagListView!
+    @IBOutlet weak var keywordsTitleLabel: UILabel!
+    @IBOutlet weak var keywordsTagListView: TagListView!
     
     var model: MovieDetailsViewModel!
     
     var movie: Movie!
     
-//    let crewList = ReactiveList<(name: String, job: String)>()
-//    let castList = ReactiveList<(name: String, character: String, profilePath: String?)>()
+    private let homepageLabelTapSubject = PublishSubject<Void>()
     
     fileprivate let disposeBag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        reloadData()
+        setImages()
         
-        model = MovieDetailsViewModel(input: MovieDetailsViewOutput(movie: movie))
+        //react to taps on homepageLabel
+        let tap = UITapGestureRecognizer(target: self, action: #selector(MovieDetailsViewController.homepageViewTapped))
+        homepageLabel.addGestureRecognizer(tap)
         
-        let castManager = TopBilledCastManager()
-        topBilledCastCollection.delegate = castManager
-        topBilledCastCollection.dataSource = castManager
+        let castManager = TopBilledCastManager(of: topBilledCastCollection, cellIdentifier: "TopBilledCastCell")
+        { cast in
+            self.topBilledCastCollection.reloadData()
+        }
         
-        castManager.callback = {
-            mainAsync {
-                self.topBilledCastCollection.reloadData()
+        let crewManager = FeaturedCrewManager(of: featuredCrewCollection, cellIdentifier: "FeaturedCrewCell")
+        { crew in
+            self.featuredCrewCollection.reloadData()
+        }
+        
+        let selfOutput = MovieDetailsViewOutput(movie: movie,
+                                                playTrailerTaps: playTrailerButton.tap,
+                                                userListsTaps: userListsBarButton.tap,
+                                                favoriteTaps: favoriteBarButton.tap,
+                                                bookmarkTaps: bookmarkBarButton.tap,
+                                                rateTaps: rateBarButton.tap,
+                                                genreTap: genresTagListView.tap,
+                                                keywordTap: keywordsTagListView.tap,
+                                                homepageLinkTap: homepageLabelTapSubject.asObservable(),
+                                                crewTap: crewManager.itemSelected.map { (indexPath: $0, crew: $1) },
+                                                castTap: castManager.itemSelected.map { (indexPath: $0, cast: $1) })
+        
+        model = MovieDetailsViewModel(input: selfOutput)
+        
+        
+        //MARK: ViewModel output
+        guard let output = model.output else { return }
+        
+        let d1 = castManager.elements.bindElements(of: output.cast)
+        let d2 = crewManager.elements.bindElements(of: output.crew)
+        
+        let d3 = output
+            .genres
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe { (event) in
+            guard let genres = event.element else { return }
+            
+            self.genresTagListView.removeAllTags()
+            
+            for genre in genres {
+                if let name = genre.name {
+                    self.genresTagListView.addTag(name)
+                }
             }
         }
         
-        let crewManager = FeaturedCrewManager()
-        
-        crewManager.callback = {
-            mainAsync {
-                self.featuredCrewCollection.reloadData()
+        let d4 = output
+            .keywords
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe { (event) in
+            guard let keywords = event.element else { return }
+            
+            self.keywordsTagListView.removeAllTags()
+            
+            for keyword in keywords {
+                if let name = keyword.name {
+                    self.keywordsTagListView.addTag(name)
+                }
             }
         }
         
-        featuredCrewCollection.delegate = crewManager
-        featuredCrewCollection.dataSource = crewManager
+        let d5 = output.movie
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe { (event) in
+                
+                guard let movie = event.element else { return }
+            
+                self.movie = movie
+                self.reloadData()
+        }
         
+        let d6 = output.event
+            .observeOn(MainScheduler.instance)
+            .subscribe { (event) in
+            guard let event = event.element else { return }
+            
+            switch event {
+                
+                case .Trailer(let url): self.openUrl(url: url)
+                
+                case .AddToLists: print(".AddToLists")
+                
+                case .Favorite: print(".Favorite")
+                
+                case .Bookmark: print(".Bookmark")
+                
+                case .Rate: print(".Rate")
+                
+                case .SelectedTag(let tag): print(".SelectedTag:", tag)
+                
+                case .Open(let url): self.openUrl(url: url)
+                
+                case .SelectedCast(let movieCast): print(movieCast.name ?? "")
+                
+                case .SelectedCrew(let movieCrew): print(movieCrew.name ?? "")
+            }
+        }
+        
+        disposeBag.insert(d1, d2, d3, d4, d5, d6)
+    }
+    
+    //MARK: Images
+    func setImages() {
         if let backdrop = backdrop, let backdropPath = movie.backdrop_path {
             backdrop.setImage(.Backdrop(path: backdropPath, size: .w780))
         }
@@ -74,94 +183,73 @@ class MovieDetailsViewController: UIViewController {
         if let posterPath = movie.poster_path {
             poster.setImage(.Poster(path: posterPath, size: .w500))
         }
+    }
+    
+    //MARK: Reload Data
+    func reloadData() {
+        guard let movie = self.movie else { return }
         
-        overview.text = movie.overview
-        movieTitle.text = movie.title
+        overviewLabel.text = movie.overview
+        movieTitleLabel.text = movie.title
         
         if let voteAverage = movie.vote_average {
-            rating.value = CGFloat(voteAverage)
+            ratingView.value = CGFloat(voteAverage) * 10.0
         }
         
         if let releaseDate = movie.release_date {
-            year.text = (releaseDate as NSString).substring(to: 4)
-        } else {
-            year.text = nil
+            yearLabel.text = releaseDate.substring(to: 4)
         }
         
-        //MARK: ViewModel output
-        guard let output = model.output else { return }
+        self.releaseInformationLabel.text = movie.status
+        self.originalLanguageLabel.text = movie.original_lanugage
         
-        let mappedCast =
-            output
-            .cast
-            .asObservable
-            .map { (cast: [MovieCast]) -> [(name: String, character: String, profilePath: String?)] in
-                return cast.filter { $0.name != nil && $0.character != nil }.map { (name: $0.name!, character: $0.character!, profilePath: $0.profile_path) }
+        if let runtime = movie.runtime {
+            self.runtimeLabel.text = runtime.format(as: .HoursAndMinutes)
         }
         
-        let mappedCrew =
-            output
-                .crew
-                .asObservable
-                .map { (crew: [MovieCrew]) -> [(name: String, job: String)] in
-                    return crew
-                        .filter { $0.name != nil && $0.job != nil }
-                        .map { (name: $0.name!, job: $0.job!) }
+        if let budget = movie.budget{
+            self.budgetLabel.text = budget.format(as: .Currency)
         }
         
-        _ = castManager.bind(cast: mappedCast)
-        _ = crewManager.bind(crew: mappedCrew)
-
+        if let revenue = movie.revenue{
+            self.revenueLabel.text = revenue.format(as: .Currency)
+        }
+        
+        self.homepageLabel.text = movie.homepage
+        
+        if let date = movie.release_date {
+            self.releaseInformationLabel.text = date.format(as: .Date(format: .yyyy_MM_dd, style: .medium))
+        }
     }
     
+    func homepageViewTapped() {
+        homepageLabelTapSubject.onNext(())
+    }
 }
+
+
+//MARK: Featured Crew
 
 class FeaturedCrewCell: UICollectionViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var job: UILabel!
-    
 }
 
-class FeaturedCrewManager: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
-
-    let crew = ReactiveList<(name: String, job: String)>()
-
-    var callback: (() -> Void)?
+class FeaturedCrewManager: CollectionViewHelper<MovieCrew, FeaturedCrewCell> {
     
-    override init() {
-        super.init()
+    
+    override init(of collection: UICollectionView, cellIdentifier: String, dataChanges: ((_: [MovieCrew]) -> Void)? = nil) {
+        super.init(of: collection, cellIdentifier: cellIdentifier, dataChanges: dataChanges)
         
-        _ = crew.asObservable
-            .subscribeOn(MainScheduler.instance)
-            .subscribe { _ in
-            self.callback?()
+        style = { cell, crew in
+            cell.name.text = crew.name
+            cell.job.text = crew.job
         }
     }
     
-    func bind(crew: Observable<(name: String, job: String)>) -> Disposable {
-        return self.crew.bindElements(of: crew)
-    }
-    
-    func bind(crew: Observable<[(name: String, job: String)]>) -> Disposable {
-        return self.crew.bindElements(of: crew)
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return crew.data.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCrewCell", for: indexPath) as! FeaturedCrewCell
-        cell.name.text = crew.data[indexPath.row].name
-        cell.job.text = crew.data[indexPath.row].job
-        
-        return cell
-    }
 }
+
+//MARK: Top Billed Cast
 
 class TopBilledCastCell: UICollectionViewCell {
     
@@ -171,52 +259,25 @@ class TopBilledCastCell: UICollectionViewCell {
     
 }
 
-class TopBilledCastManager: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
+class TopBilledCastManager: CollectionViewHelper<MovieCast, TopBilledCastCell> {
     
-    var cast = ReactiveList<(name: String, character: String, profilePath: String?)>()
-    
-    var callback: (() -> Void)?
-    
-    override init() {
-        super.init()
+    override init(of collection: UICollectionView, cellIdentifier: String, dataChanges: ((_: [MovieCast]) -> Void)? = nil) {
+        super.init(of: collection, cellIdentifier: cellIdentifier, dataChanges: dataChanges)
         
-        _ = cast.asObservable
-            .subscribeOn(MainScheduler.instance)
-            .subscribe { _ in
-                self.callback?()
+        style = { cell, person in
+            
+            cell.nameLabel.text = person.name
+
+            cell.characterLabel.text = person.character
+            
+            if let profilePath = person.profile_path {
+                cell.picture.setImage(.Profile(path: profilePath, size: .w132_h132_bestv2))
+                
+                cell.picture.layer.masksToBounds = true
+                cell.picture.layer.cornerRadius = cell.picture.frame.width / 2
+            }
+            
         }
+    
     }
-    
-    
-    func bind(cast: Observable<(name: String, character: String, profilePath: String?)>) -> Disposable {
-        return self.cast.bindElements(of: cast)
-    }
-    
-    func bind(cast: Observable<[(name: String, character: String, profilePath: String?)]>) -> Disposable {
-        return self.cast.bindElements(of: cast)
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cast.data.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopBilledCastCell", for: indexPath) as! TopBilledCastCell
-        
-        let person = cast.data[indexPath.row]
-        
-        cell.nameLabel.text = person.name
-        cell.characterLabel.text = person.character
-        
-        if let profilePath = person.profilePath {
-            cell.picture.setImage(.Profile(path: profilePath, size: .w132_h132_bestv2))
-        }
-        return cell
-    }
-    
 }
