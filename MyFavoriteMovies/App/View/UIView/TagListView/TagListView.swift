@@ -9,6 +9,7 @@
 // https://github.com/ElaWorkshop/TagListView
 
 import UIKit
+import RxSwift
 
 @objc public protocol TagListViewDelegate {
     @objc optional func tagPressed(_ title: String, tagView: TagView, sender: TagListView) -> Void
@@ -413,5 +414,32 @@ open class TagListView: UIView {
         if let tagView = closeButton.tagView {
             delegate?.tagRemoveButtonPressed?(tagView.currentTitle ?? "", tagView: tagView, sender: self)
         }
+    }
+    
+    
+    //MARK: Added by Kamil Swojak 20.02.2017
+    internal var delegateSubject: PublishSubject<String>
+    
+    required public init?(coder aDecoder: NSCoder) {
+        delegateSubject = PublishSubject<String>()
+        super.init(coder: aDecoder)
+        delegate = self
+    }
+    
+    override init(frame: CGRect) {
+        delegateSubject = PublishSubject<String>()
+        super.init(frame: frame)
+        delegate = self
+    }
+    
+    var tap: Observable<String> {
+        return delegateSubject.asObservable()
+    }
+    
+}
+
+extension TagListView: TagListViewDelegate {
+    public func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        delegateSubject.onNext(title)
     }
 }
