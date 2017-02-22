@@ -53,6 +53,25 @@
 		7E46A90E1E28D10800BBB8D9 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46A90D1E28D10800BBB8D9 /* Season.swift */; };
 		7E4F050E1E3766E90054B636 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4F050D1E3766E90054B636 /* Navigation.storyboard */; };
 		7E5A9A871E56FB3D00810525 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A9A861E56FB3D00810525 /* UIView.swift */; };
+		7E6227401E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E62272C1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 1.png */; };
+		7E6227411E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E62272D1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 2.png */; };
+		7E6227421E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E62272E1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 3.png */; };
+		7E6227431E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details half 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E62272F1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details half 1.png */; };
+		7E6227441E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details half 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6227301E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details half 2.png */; };
+		7E6227451E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6227311E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 1.png */; };
+		7E6227461E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6227321E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 2.png */; };
+		7E6227471E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6227331E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 3.png */; };
+		7E6227481E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details port 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6227341E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details port 1.png */; };
+		7E6227491E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details port 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6227351E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details port 2.png */; };
+		7E62274A1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details quarter 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6227361E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details quarter 1.png */; };
+		7E62274B1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details quarter 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6227371E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details quarter 2.png */; };
+		7E62274C1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) list land.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6227381E5E3EF9005DA5FA /* iPad Pro (12.3 inch) list land.png */; };
+		7E62274D1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) list port.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6227391E5E3EF9005DA5FA /* iPad Pro (12.3 inch) list port.png */; };
+		7E62274E1E5E3EF9005DA5FA /* iPhone 7 Plus details port 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E62273B1E5E3EF9005DA5FA /* iPhone 7 Plus details port 1.png */; };
+		7E62274F1E5E3EF9005DA5FA /* iPhone 7 Plus details port 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E62273C1E5E3EF9005DA5FA /* iPhone 7 Plus details port 2.png */; };
+		7E6227501E5E3EF9005DA5FA /* iPhone 7 Plus details port 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E62273D1E5E3EF9005DA5FA /* iPhone 7 Plus details port 3.png */; };
+		7E6227511E5E3EF9005DA5FA /* iPhone 7 Plus list land.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E62273E1E5E3EF9005DA5FA /* iPhone 7 Plus list land.png */; };
+		7E6227521E5E3EF9005DA5FA /* iPhone 7 Plus list port.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E62273F1E5E3EF9005DA5FA /* iPhone 7 Plus list port.png */; };
 		7E6410F01E2B736000FD06C9 /* GetMovieReleaseDatesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6410EF1E2B736000FD06C9 /* GetMovieReleaseDatesResponse.swift */; };
 		7E6410F21E2B75AA00FD06C9 /* GetMovieTranslationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6410F11E2B75AA00FD06C9 /* GetMovieTranslationsResponse.swift */; };
 		7E6410F41E2B8E0400FD06C9 /* GetMovieListsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6410F31E2B8E0400FD06C9 /* GetMovieListsResponse.swift */; };
@@ -268,6 +287,25 @@
 		7E46A90D1E28D10800BBB8D9 /* Season.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		7E4F050D1E3766E90054B636 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
 		7E5A9A861E56FB3D00810525 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		7E62272C1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) 3q 1.png"; sourceTree = "<group>"; };
+		7E62272D1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) 3q 2.png"; sourceTree = "<group>"; };
+		7E62272E1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) 3q 3.png"; sourceTree = "<group>"; };
+		7E62272F1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details half 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) details half 1.png"; sourceTree = "<group>"; };
+		7E6227301E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details half 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) details half 2.png"; sourceTree = "<group>"; };
+		7E6227311E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) details land 1.png"; sourceTree = "<group>"; };
+		7E6227321E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) details land 2.png"; sourceTree = "<group>"; };
+		7E6227331E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) details land 3.png"; sourceTree = "<group>"; };
+		7E6227341E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details port 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) details port 1.png"; sourceTree = "<group>"; };
+		7E6227351E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details port 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) details port 2.png"; sourceTree = "<group>"; };
+		7E6227361E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details quarter 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) details quarter 1.png"; sourceTree = "<group>"; };
+		7E6227371E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details quarter 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) details quarter 2.png"; sourceTree = "<group>"; };
+		7E6227381E5E3EF9005DA5FA /* iPad Pro (12.3 inch) list land.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) list land.png"; sourceTree = "<group>"; };
+		7E6227391E5E3EF9005DA5FA /* iPad Pro (12.3 inch) list port.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro (12.3 inch) list port.png"; sourceTree = "<group>"; };
+		7E62273B1E5E3EF9005DA5FA /* iPhone 7 Plus details port 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 7 Plus details port 1.png"; sourceTree = "<group>"; };
+		7E62273C1E5E3EF9005DA5FA /* iPhone 7 Plus details port 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 7 Plus details port 2.png"; sourceTree = "<group>"; };
+		7E62273D1E5E3EF9005DA5FA /* iPhone 7 Plus details port 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 7 Plus details port 3.png"; sourceTree = "<group>"; };
+		7E62273E1E5E3EF9005DA5FA /* iPhone 7 Plus list land.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 7 Plus list land.png"; sourceTree = "<group>"; };
+		7E62273F1E5E3EF9005DA5FA /* iPhone 7 Plus list port.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 7 Plus list port.png"; sourceTree = "<group>"; };
 		7E6410EF1E2B736000FD06C9 /* GetMovieReleaseDatesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMovieReleaseDatesResponse.swift; sourceTree = "<group>"; };
 		7E6410F11E2B75AA00FD06C9 /* GetMovieTranslationsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMovieTranslationsResponse.swift; sourceTree = "<group>"; };
 		7E6410F31E2B8E0400FD06C9 /* GetMovieListsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMovieListsResponse.swift; sourceTree = "<group>"; };
@@ -657,6 +695,48 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		7E62272A1E5E3EF9005DA5FA /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				7E62272B1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) */,
+				7E62273A1E5E3EF9005DA5FA /* iPhone 7 Plus */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		7E62272B1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) */ = {
+			isa = PBXGroup;
+			children = (
+				7E62272C1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 1.png */,
+				7E62272D1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 2.png */,
+				7E62272E1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 3.png */,
+				7E62272F1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details half 1.png */,
+				7E6227301E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details half 2.png */,
+				7E6227311E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 1.png */,
+				7E6227321E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 2.png */,
+				7E6227331E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 3.png */,
+				7E6227341E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details port 1.png */,
+				7E6227351E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details port 2.png */,
+				7E6227361E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details quarter 1.png */,
+				7E6227371E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details quarter 2.png */,
+				7E6227381E5E3EF9005DA5FA /* iPad Pro (12.3 inch) list land.png */,
+				7E6227391E5E3EF9005DA5FA /* iPad Pro (12.3 inch) list port.png */,
+			);
+			path = "iPad Pro (12.3 inch)";
+			sourceTree = "<group>";
+		};
+		7E62273A1E5E3EF9005DA5FA /* iPhone 7 Plus */ = {
+			isa = PBXGroup;
+			children = (
+				7E62273B1E5E3EF9005DA5FA /* iPhone 7 Plus details port 1.png */,
+				7E62273C1E5E3EF9005DA5FA /* iPhone 7 Plus details port 2.png */,
+				7E62273D1E5E3EF9005DA5FA /* iPhone 7 Plus details port 3.png */,
+				7E62273E1E5E3EF9005DA5FA /* iPhone 7 Plus list land.png */,
+				7E62273F1E5E3EF9005DA5FA /* iPhone 7 Plus list port.png */,
+			);
+			path = "iPhone 7 Plus";
+			sourceTree = "<group>";
+		};
 		7E703CB21E33A506002ED16C /* ImageService */ = {
 			isa = PBXGroup;
 			children = (
@@ -1008,6 +1088,7 @@
 		8EFDD0ED1E08485600D7CAB9 /* MyFavoriteMovies */ = {
 			isa = PBXGroup;
 			children = (
+				7E62272A1E5E3EF9005DA5FA /* Screens */,
 				8EFDD0EE1E08485600D7CAB9 /* App */,
 				7EC8C76D1E48674F00A4CB16 /* View */,
 				8EFDD1101E08485600D7CAB9 /* Tmdb */,
@@ -1219,26 +1300,45 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E6227451E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 1.png in Resources */,
 				7E8EB5731E54E7F600FE446C /* SubtitleView.xib in Resources */,
 				7EF63C8A1E493CC9002B410A /* Icon8-attribution-link in Resources */,
 				8EFDD1301E08485600D7CAB9 /* Login.storyboard in Resources */,
 				7E4F050E1E3766E90054B636 /* Navigation.storyboard in Resources */,
 				7EC8C7C31E4869DA00A4CB16 /* MovieDataTableViewCell.xib in Resources */,
+				7E6227401E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 1.png in Resources */,
 				8E552FAE1E0DD68F00B8A5BC /* Assets 23-02-21-160.xcassets in Resources */,
 				7EC8C76A1E48653500A4CB16 /* Root.storyboard in Resources */,
 				7EC8C7BD1E4869DA00A4CB16 /* ProfileCollectionViewCell.xib in Resources */,
+				7E6227461E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 2.png in Resources */,
 				7EA8611E1E248C67009FF38D /* SidePanel.storyboard in Resources */,
+				7E6227471E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details land 3.png in Resources */,
+				7E6227481E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details port 1.png in Resources */,
+				7E6227441E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details half 2.png in Resources */,
 				7EC8C7D61E486B0100A4CB16 /* MovieCollections.storyboard in Resources */,
+				7E62274F1E5E3EF9005DA5FA /* iPhone 7 Plus details port 2.png in Resources */,
 				7EC8C7C11E4869DA00A4CB16 /* LabelTableViewCell.xib in Resources */,
+				7E6227411E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 2.png in Resources */,
 				7EC8C7CB1E4869DA00A4CB16 /* SubtitleTableViewCell.xib in Resources */,
 				7EC8C7C71E4869DA00A4CB16 /* ProfileListTableViewCell.xib in Resources */,
 				7EC8C7C91E4869DA00A4CB16 /* SubtitleListTableViewCell.xib in Resources */,
+				7E6227491E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details port 2.png in Resources */,
 				7EC8C7C51E4869DA00A4CB16 /* MovieTableViewCell.xib in Resources */,
 				7EC8C7CD1E4869DA00A4CB16 /* VerticalMovieListTableViewCell.xib in Resources */,
+				7E6227431E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details half 1.png in Resources */,
+				7E62274E1E5E3EF9005DA5FA /* iPhone 7 Plus details port 1.png in Resources */,
+				7E6227501E5E3EF9005DA5FA /* iPhone 7 Plus details port 3.png in Resources */,
 				7EC8C7BB1E4869DA00A4CB16 /* MovieCollectionViewCell.xib in Resources */,
+				7E6227521E5E3EF9005DA5FA /* iPhone 7 Plus list port.png in Resources */,
+				7E62274A1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details quarter 1.png in Resources */,
+				7E6227421E5E3EF9005DA5FA /* iPad Pro (12.3 inch) 3q 3.png in Resources */,
+				7E62274D1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) list port.png in Resources */,
 				7EC8C7BF1E4869DA00A4CB16 /* SubtitleCollectionViewCell.xib in Resources */,
+				7E6227511E5E3EF9005DA5FA /* iPhone 7 Plus list land.png in Resources */,
 				7E7F80821E53656600FF3F8C /* MovieDetails.storyboard in Resources */,
 				8EFDD1331E08485600D7CAB9 /* LaunchScreen.storyboard in Resources */,
+				7E62274B1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) details quarter 2.png in Resources */,
+				7E62274C1E5E3EF9005DA5FA /* iPad Pro (12.3 inch) list land.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
