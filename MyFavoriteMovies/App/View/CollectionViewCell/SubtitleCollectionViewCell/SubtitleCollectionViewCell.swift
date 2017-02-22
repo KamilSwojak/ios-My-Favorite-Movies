@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SubtitleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel! 
