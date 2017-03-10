@@ -1,0 +1,9 @@
+[submodule "Library/RxSwift"]
+	path = Library/RxSwift
+	url = https://github.com/ReactiveX/RxSwift.git
+[submodule "Library/TmdbApi"]
+	path = Library/TmdbApi
+	url = https://github.com/KamilSwojak/ios-TmdbApi.git
+[submodule "Library/MBCircularProgressView"]
+	path = Library/MBCircularProgressView
+	url = https://github.com/MatiBot/MBCircularProgressBar
