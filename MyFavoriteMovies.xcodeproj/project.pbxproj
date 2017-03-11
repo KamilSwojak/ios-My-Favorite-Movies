@@ -24,6 +24,7 @@
 		7E9DA7331E738D0F0091110E /* MBCircularProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9DA72F1E738D0F0091110E /* MBCircularProgressBarLayer.m */; };
 		7E9DA7341E738D0F0091110E /* MBCircularProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9DA7311E738D0F0091110E /* MBCircularProgressBarView.m */; };
 		7E9DA7381E741E0C0091110E /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9DA7371E741E0C0091110E /* Secret.swift */; };
+		7E9DA73A1E741FD70091110E /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 7E9DA7391E741FD70091110E /* LICENSE */; };
 		7EA704B21E4246B900E54485 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA704B11E4246B900E54485 /* UICollectionViewCell.swift */; };
 		7EA704B41E4246C200E54485 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA704B31E4246C200E54485 /* UITableViewCell.swift */; };
 		7EA8611E1E248C67009FF38D /* SidePanel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA8611D1E248C67009FF38D /* SidePanel.storyboard */; };
@@ -128,6 +129,7 @@
 		7E9DA7311E738D0F0091110E /* MBCircularProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCircularProgressBarView.m; sourceTree = "<group>"; };
 		7E9DA7321E738D0F0091110E /* MyFavoriteMovies-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MyFavoriteMovies-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E9DA7371E741E0C0091110E /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		7E9DA7391E741FD70091110E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		7EA704B11E4246B900E54485 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		7EA704B31E4246C200E54485 /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		7EA8611D1E248C67009FF38D /* SidePanel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SidePanel.storyboard; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				7E9DA7301E738D0F0091110E /* MBCircularProgressBarView.h */,
 				7E9DA7311E738D0F0091110E /* MBCircularProgressBarView.m */,
 				7E9DA7321E738D0F0091110E /* MyFavoriteMovies-Bridging-Header.h */,
+				7E9DA7391E741FD70091110E /* LICENSE */,
 			);
 			path = MBCircularProgressView;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				7E8EB5731E54E7F600FE446C /* SubtitleView.xib in Resources */,
 				7EF63C8A1E493CC9002B410A /* Icon8-attribution-link in Resources */,
 				8EFDD1301E08485600D7CAB9 /* Login.storyboard in Resources */,
+				7E9DA73A1E741FD70091110E /* LICENSE in Resources */,
 				7E4F050E1E3766E90054B636 /* Navigation.storyboard in Resources */,
 				7EC8C7C31E4869DA00A4CB16 /* MovieDataTableViewCell.xib in Resources */,
 				8E552FAE1E0DD68F00B8A5BC /* Assets 23-02-21-160.xcassets in Resources */,
