@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TmdbApi
 
 extension UIStoryboard{
     
@@ -22,7 +23,7 @@ extension UIStoryboard{
         return UIStoryboard(name: "MovieCollections", bundle: nil).instantiateInitialViewController() as! MovieCollectionsViewController
     }
     
-    static func movieDetails(movie: Movie) -> MovieDetailsViewController{
+    static func movieDetails(movie: TmdbMovie) -> MovieDetailsViewController{
         let s = UIStoryboard(name: "MovieDetails", bundle: nil)
         let vc = s.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
         vc.movie = movie
