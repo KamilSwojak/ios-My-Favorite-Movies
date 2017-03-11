@@ -8,9 +8,10 @@
 
 import Foundation
 import RxSwift
+import TmdbApi
 
 struct MovieDetailsViewOutput: ViewModelInputType{
-    var movie: Movie
+    var movie: TmdbMovie
     var playTrailerTaps: Observable<Void>
     var userListsTaps: Observable<Void>
     var favoriteTaps: Observable<Void>
@@ -19,16 +20,16 @@ struct MovieDetailsViewOutput: ViewModelInputType{
     var genreTap: Observable<String>
     var keywordTap: Observable<String>
     var homepageLinkTap: Observable<Void>
-    var crewTap: Observable<(indexPath: IndexPath, crew: MovieCrew)>
-    var castTap: Observable<(indexPath: IndexPath, cast: MovieCast)>
+    var crewTap: Observable<(indexPath: IndexPath, crew: TmdbMovieCrew)>
+    var castTap: Observable<(indexPath: IndexPath, cast: TmdbMovieCast)>
 }
 
 struct MovieDetailsViewModelOutput: ViewModelOutputType{
-    var movie: Observable<Movie>
-    var crew: Observable<[MovieCrew]>
-    var cast: Observable<[MovieCast]>
-    var keywords: Observable<[Keyword]>
-    var genres: Observable<[Genre]>
+    var movie: Observable<TmdbMovie>
+    var crew: Observable<[TmdbMovieCrew]>
+    var cast: Observable<[TmdbMovieCast]>
+    var keywords: Observable<[TmdbKeyword]>
+    var genres: Observable<[TmdbGenre]>
     var trailerButtonVisibility: Observable<Bool>
     var event: Observable<MovieDetailsEvent>
 }
@@ -41,6 +42,6 @@ enum MovieDetailsEvent {
     case Rate
     case SelectedTag(_: String)
     case Open(_: URL)
-    case SelectedCrew(_: MovieCrew)
-    case SelectedCast(_: MovieCast)
+    case SelectedCrew(_: TmdbMovieCrew)
+    case SelectedCast(_: TmdbMovieCast)
 }

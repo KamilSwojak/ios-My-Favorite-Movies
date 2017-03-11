@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import TmdbApi
 
 final class MovieDetailsViewModel: BaseViewModel<MovieDetailsViewOutput, MovieDetailsViewModelOutput> {
     
@@ -36,7 +37,7 @@ final class MovieDetailsViewModel: BaseViewModel<MovieDetailsViewOutput, MovieDe
             Tmdb.shared.api
                 .getMovieVideos(movieId: movieId)
                 .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-                .filter { (movieVideos: GetMovieVideosResponse) -> Bool in // has trailers?
+                .filter { (movieVideos: TmdbGetMovieVideosResponse) -> Bool in // has trailers?
                     guard let results = movieVideos.results else {
                         return false
                     }

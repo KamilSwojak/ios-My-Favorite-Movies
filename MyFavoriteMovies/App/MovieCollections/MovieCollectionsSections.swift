@@ -8,13 +8,13 @@
 
 import Foundation
 import RxSwift
-
+import TmdbApi
 
 class MovieCollectionsSections: TableSectionsType {
     
     var sections: [TableSectionType]
     
-    var itemSelected = PublishSubject<(section: Int, row: Int, movie: Movie)>()
+    var itemSelected = PublishSubject<(section: Int, row: Int, movie: TmdbMovie)>()
     
     var count: Int {
         return sections.count
@@ -51,7 +51,7 @@ class MovieCollectionsSections: TableSectionsType {
         case Popular
         case TopRated
         case Upcoming
-        case Genre(_: MovieGenre)
+        case Genre(_: TmdbMovieGenre)
         
         var get: VerticalMovieListSection {
             switch self {
@@ -76,17 +76,17 @@ class VerticalMovieListSection : TableSectionType {
     let title: String?
     var height: CGFloat = 350
     
-    let elements = ReactiveList<Movie>()
+    let elements = ReactiveList<TmdbMovie>()
     
     let cell: UITableViewCell
     
-    var selected: Observable<(row: Int, movie: Movie)>{
+    var selected: Observable<(row: Int, movie: TmdbMovie)>{
         return (cell as! VerticalMovieListTableViewCell).itemSelected.map{ (row: $0.row, movie: self.elements.data[$0.row]) }
     }
     
     let disposeBag = DisposeBag()
     
-    init(movies: Observable<[Movie]>, title: String? = nil) {
+    init(movies: Observable<[TmdbMovie]>, title: String? = nil) {
         self.title = title
         
         let cell = UITableViewCell.verticalMovieList
@@ -163,7 +163,7 @@ class UpcomingMoviesTableSection: VerticalMovieListSection {
 
 class GenresMovieTableSection: VerticalMovieListSection {
     
-    init(genre: MovieGenre) {
+    init(genre: TmdbMovieGenre) {
         let movies = Tmdb.shared.api
             .getMoviesByGenre(genreId: genre)
             .filter { $0.results != nil }

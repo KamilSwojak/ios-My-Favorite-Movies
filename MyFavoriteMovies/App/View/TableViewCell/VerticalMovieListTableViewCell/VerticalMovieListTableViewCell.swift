@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import TmdbApi
 
 class VerticalMovieListTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource{
 
@@ -18,7 +19,7 @@ class VerticalMovieListTableViewCell: UITableViewCell, UICollectionViewDelegate,
         return collection.rx.itemSelected.asObservable()
     }
     
-    var movieList: ReactiveList<Movie>!
+    var movieList: ReactiveList<TmdbMovie>!
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
