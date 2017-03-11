@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TmdbApi
 
 class TmdbImageView: UIImageView{
     

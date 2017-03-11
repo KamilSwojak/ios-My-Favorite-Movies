@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import MBCircularProgressBar
+//import MBCircularProgressBar
 import RxSwift
+import TmdbApi
 
 class MovieDetailsViewController: UIViewController {
     
@@ -57,7 +58,7 @@ class MovieDetailsViewController: UIViewController {
     
     var model: MovieDetailsViewModel!
     
-    var movie: Movie!
+    var movie: TmdbMovie!
     
     private let homepageLabelTapSubject = PublishSubject<Void>()
     
@@ -235,10 +236,10 @@ class FeaturedCrewCell: UICollectionViewCell {
     @IBOutlet weak var job: UILabel!
 }
 
-class FeaturedCrewManager: CollectionViewHelper<MovieCrew, FeaturedCrewCell> {
+class FeaturedCrewManager: CollectionViewHelper<TmdbMovieCrew, FeaturedCrewCell> {
     
     
-    override init(of collection: UICollectionView, cellIdentifier: String, dataChanges: ((_: [MovieCrew]) -> Void)? = nil) {
+    override init(of collection: UICollectionView, cellIdentifier: String, dataChanges: ((_: [TmdbMovieCrew]) -> Void)? = nil) {
         super.init(of: collection, cellIdentifier: cellIdentifier, dataChanges: dataChanges)
         
         style = { cell, crew in
@@ -259,9 +260,9 @@ class TopBilledCastCell: UICollectionViewCell {
     
 }
 
-class TopBilledCastManager: CollectionViewHelper<MovieCast, TopBilledCastCell> {
+class TopBilledCastManager: CollectionViewHelper<TmdbMovieCast, TopBilledCastCell> {
     
-    override init(of collection: UICollectionView, cellIdentifier: String, dataChanges: ((_: [MovieCast]) -> Void)? = nil) {
+    override init(of collection: UICollectionView, cellIdentifier: String, dataChanges: ((_: [TmdbMovieCast]) -> Void)? = nil) {
         super.init(of: collection, cellIdentifier: cellIdentifier, dataChanges: dataChanges)
         
         style = { cell, person in

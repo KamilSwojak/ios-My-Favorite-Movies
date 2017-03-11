@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import TmdbApi
 
 final class LoginViewModel: BaseViewModel<LoginInput, LoginModelOutput> {
     

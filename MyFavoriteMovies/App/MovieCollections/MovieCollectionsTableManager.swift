@@ -8,12 +8,13 @@
 
 import UIKit
 import RxSwift
+import TmdbApi
 
 class MovieCollectionsTableManager: NSObject, UITableViewDelegate, UITableViewDataSource{
     
     let sections: MovieCollectionsSections
     
-    var movieSelected: Observable<(section: Int, row: Int, movie: Movie)>
+    var movieSelected: Observable<(section: Int, row: Int, movie: TmdbMovie)>
     
     init(sections: MovieCollectionsSections.Section...) {
         self.sections = MovieCollectionsSections(sections: sections)
