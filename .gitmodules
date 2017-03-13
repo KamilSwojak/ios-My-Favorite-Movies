@@ -4,3 +4,9 @@
 [submodule "Library/TmdbApi"]
 	path = Library/TmdbApi
 	url = https://github.com/KamilSwojak/ios-TmdbApi.git
+[submodule "Library/TagListView"]
+	path = Library/TagListView
+	url = https://github.com/KamilSwojak/TagListView.git
+[submodule "Library/KSSwift"]
+	path = Library/KSSwift
+	url = https://KamilSwojak@bitbucket.org/KamilSwojak/ks-swift.git
