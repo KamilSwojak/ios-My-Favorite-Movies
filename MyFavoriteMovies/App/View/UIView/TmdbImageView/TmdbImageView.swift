@@ -8,6 +8,7 @@
 
 import UIKit
 import TmdbApi
+import KSConcurrency
 
 class TmdbImageView: UIImageView{
     
