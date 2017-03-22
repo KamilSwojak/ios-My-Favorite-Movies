@@ -5,6 +5,91 @@
       location = "group:Library"
       name = "Library">
       <FileRef
+         location = "group:KSReactiveXExtensions/KSReactiveXEtensions.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:KSSwift/KSSwift.xcodeproj">
+      </FileRef>
+      <Group
+         location = "group:TagListView"
+         name = "TagListView">
+         <FileRef
+            location = "group:LICENSE">
+         </FileRef>
+         <FileRef
+            location = "group:README.md">
+         </FileRef>
+         <Group
+            location = "group:Screenshots"
+            name = "Screenshots">
+            <FileRef
+               location = "group:InterfaceBuilder.png">
+            </FileRef>
+            <FileRef
+               location = "group:Screenshot.png">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:TagListView"
+            name = "TagListView">
+            <FileRef
+               location = "group:CloseButton.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:TagListView.h">
+            </FileRef>
+            <FileRef
+               location = "group:TagListView.swift">
+            </FileRef>
+            <FileRef
+               location = "group:TagView.swift">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:TagListView.podspec">
+         </FileRef>
+         <Group
+            location = "group:TagListViewDemo"
+            name = "TagListViewDemo">
+            <FileRef
+               location = "group:AppDelegate.swift">
+            </FileRef>
+            <Group
+               location = "group:Base.lproj"
+               name = "Base.lproj">
+               <FileRef
+                  location = "group:LaunchScreen.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:Main.storyboard">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Images.xcassets"
+               name = "Images.xcassets">
+               <Group
+                  location = "group:AppIcon.appiconset"
+                  name = "AppIcon.appiconset">
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+            </Group>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:ViewController.swift">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:TagListViewDemo.xcodeproj">
+         </FileRef>
+      </Group>
+      <FileRef
          location = "group:TmdbApi/TmdbApi.xcodeproj">
       </FileRef>
       <FileRef
