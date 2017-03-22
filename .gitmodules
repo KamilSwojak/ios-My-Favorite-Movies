@@ -10,3 +10,6 @@
 [submodule "Library/KSSwift"]
 	path = Library/KSSwift
 	url = https://KamilSwojak@bitbucket.org/KamilSwojak/ks-swift.git
+[submodule "Library/KSReactiveXExtensions"]
+	path = Library/KSReactiveXExtensions
+	url = https://KamilSwojak@bitbucket.org/KamilSwojak/ks-reactiveextensions.git
