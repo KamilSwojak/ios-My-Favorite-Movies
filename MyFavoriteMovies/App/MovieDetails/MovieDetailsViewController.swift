@@ -7,9 +7,10 @@
 //
 
 import UIKit
-//import MBCircularProgressBar
 import RxSwift
 import TmdbApi
+import TagListView
+import KSiOS
 
 class MovieDetailsViewController: UIViewController {
     
@@ -84,14 +85,25 @@ class MovieDetailsViewController: UIViewController {
             self.featuredCrewCollection.reloadData()
         }
         
+        let genresTap = PublishSubject<String>()
+        let keywordsTap = PublishSubject<String>()
+        
+        genresTagListView.tagPressedCallback = { (title, view, sender) in
+            genresTap.onNext(title)
+        }
+        
+        keywordsTagListView.tagPressedCallback = { (title, view, sender) in
+            keywordsTap.onNext(title)
+        }
+        
         let selfOutput = MovieDetailsViewOutput(movie: movie,
                                                 playTrailerTaps: playTrailerButton.tap,
                                                 userListsTaps: userListsBarButton.tap,
                                                 favoriteTaps: favoriteBarButton.tap,
                                                 bookmarkTaps: bookmarkBarButton.tap,
                                                 rateTaps: rateBarButton.tap,
-                                                genreTap: genresTagListView.tap,
-                                                keywordTap: keywordsTagListView.tap,
+                                                genreTap: genresTap.asObservable(),
+                                                keywordTap: keywordsTap.asObservable(),
                                                 homepageLinkTap: homepageLabelTapSubject.asObservable(),
                                                 crewTap: crewManager.itemSelected.map { (indexPath: $0, crew: $1) },
                                                 castTap: castManager.itemSelected.map { (indexPath: $0, cast: $1) })
