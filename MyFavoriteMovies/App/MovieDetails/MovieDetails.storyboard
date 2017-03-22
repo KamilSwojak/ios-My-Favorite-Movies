@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -14,7 +15,7 @@
         <!--Movie Details View Controller-->
         <scene sceneID="l1u-zf-FSN">
             <objects>
-                <viewController storyboardIdentifier="MovieDetailsViewController" id="nvG-it-TZp" customClass="MovieDetailsViewController" customModule="MyFavoriteMovies" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailsViewController" id="nvG-it-TZp" customClass="MovieDetailsViewController" customModule="MyFavoriteMovies_iOS" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I8M-CA-QsH"/>
                         <viewControllerLayoutGuide type="bottom" id="ajl-MH-Pj6"/>
@@ -33,7 +34,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="350"/>
                                                 <color key="backgroundColor" red="0.031372549020000001" green="0.10980392160000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O7C-BF-7tL" customClass="TmdbImageView" customModule="MyFavoriteMovies" customModuleProvider="target">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O7C-BF-7tL" customClass="TmdbImageView" customModule="MyFavoriteMovies_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="181"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="O7C-BF-7tL" secondAttribute="height" multiplier="1.77" id="qzT-W7-TvI"/>
@@ -62,7 +63,7 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="▶️️ Play Trailer"/>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" translatesAutoresizingMaskIntoConstraints="NO" id="zfU-qe-3kI" customClass="TmdbImageView" customModule="MyFavoriteMovies" customModuleProvider="target">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" translatesAutoresizingMaskIntoConstraints="NO" id="zfU-qe-3kI" customClass="TmdbImageView" customModule="MyFavoriteMovies_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="109.5" width="96" height="143.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="zfU-qe-3kI" secondAttribute="height" multiplier="2:3" id="MWX-bM-qlB"/>
@@ -176,7 +177,7 @@
                                                     <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeaturedCrewCell" id="4YP-zH-c9a" customClass="FeaturedCrewCell" customModule="MyFavoriteMovies">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeaturedCrewCell" id="4YP-zH-c9a" customClass="FeaturedCrewCell" customModule="MyFavoriteMovies_iOS">
                                                         <rect key="frame" x="16" y="0.0" width="150" height="65"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -253,14 +254,14 @@
                                                     <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TopBilledCastCell" id="1kH-SN-NuK" customClass="TopBilledCastCell" customModule="MyFavoriteMovies">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TopBilledCastCell" id="1kH-SN-NuK" customClass="TopBilledCastCell" customModule="MyFavoriteMovies_iOS">
                                                         <rect key="frame" x="16" y="0.0" width="130" height="140"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="130" height="140"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="253" horizontalCompressionResistancePriority="746" verticalCompressionResistancePriority="746" translatesAutoresizingMaskIntoConstraints="NO" id="wvC-WH-loP" customClass="TmdbImageView" customModule="MyFavoriteMovies" customModuleProvider="target">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="253" horizontalCompressionResistancePriority="746" verticalCompressionResistancePriority="746" translatesAutoresizingMaskIntoConstraints="NO" id="wvC-WH-loP" customClass="TmdbImageView" customModule="MyFavoriteMovies_iOS" customModuleProvider="target">
                                                                     <rect key="frame" x="25" y="8" width="80" height="80"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="wvC-WH-loP" secondAttribute="height" multiplier="1:1" id="fYB-ly-7aT"/>
@@ -467,7 +468,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wb9-dc-9Vr" customClass="TagListView" customModule="MyFavoriteMovies" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wb9-dc-9Vr" customClass="TagListView" customModule="TagListView">
                                                         <rect key="frame" x="8" y="63.5" width="128" height="79"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <userDefinedRuntimeAttributes>
@@ -518,7 +519,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Juy-Dz-Wcg" customClass="TagListView" customModule="MyFavoriteMovies" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Juy-Dz-Wcg" customClass="TagListView" customModule="TagListView">
                                                         <rect key="frame" x="8" y="53.5" width="128" height="113"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <userDefinedRuntimeAttributes>
