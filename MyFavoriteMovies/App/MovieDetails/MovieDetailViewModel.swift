@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import TmdbApi
+import KSReactiveXExtensions
 
 final class MovieDetailsViewModel: BaseViewModel<MovieDetailsViewOutput, MovieDetailsViewModelOutput> {
     
